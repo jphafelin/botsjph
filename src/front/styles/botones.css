@@ -1,0 +1,60 @@
+input {
+    background: #FFFF33;
+    height: 100%;
+}
+
+body {
+    background: rgb(163, 163, 163);
+
+}
+
+#btn-grabar {
+    background: rgb(0, 255, 0);
+}
+
+#ingresar {
+    background: green;
+
+}
+
+.banda {
+    background: rgb(159, 199, 243)
+}
+
+#eliminar {
+    background: red;
+}
+
+#modificar {
+    background: yellow;
+}
+
+
+
+.eleccion :hover {
+    background: #0D6EFD;
+}
+
+#formulario {
+    margin: auto;
+}
+
+#ingresar-titulo {
+    background: green;
+    font-size: x-large;
+}
+
+#eliminar-titulo {
+    background: red;
+    font-size: x-large;
+}
+
+#modificar-titulo {
+    background: yellow;
+    font-size: x-large;
+}
+
+#consultar-titulo {
+    background: #1900FF;
+    font-size: x-large;
+}

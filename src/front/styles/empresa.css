@@ -1,0 +1,125 @@
+body {
+    background: rgb(163, 163, 163);
+    font-family: monospace
+}
+
+#btn-ingresar {
+    background: green;
+}
+
+#btn-eliminar {
+    background: red;
+}
+
+#btn-modificar {
+    background: yellow;
+}
+
+#btn-consultar {
+    background: rgb(25, 0, 255);
+}
+
+#btn-reporte {
+    background: violet;
+}
+
+#btn-volver {
+    background: #FF8000
+}
+
+.casilla-id {
+    width: 43px;
+
+}
+
+.casilla-razon-social {
+    width: 410px;
+
+}
+
+.casilla-rut {
+    width: 95px;
+
+}
+
+.casilla-rut-verificador {
+    width: 17px;
+
+}
+
+.casilla-nombre-fantasia {
+    width: 360px;
+
+}
+
+.casilla-giro {
+    width: 360px;
+
+}
+
+.casilla-direccion {
+    width: 360px;
+
+}
+
+.casilla-comuna {
+    width: 185px;
+
+}
+
+.casilla-nombre {
+    width: 316px;
+
+}
+
+.casilla-telefono {
+    width: 230px;
+
+}
+
+.casilla-email {
+    width: 380px;
+
+}
+
+.casilla-cargo {
+    width: 210px;
+
+}
+
+
+.label-razon-social {
+    margin-left: 15px
+}
+
+.label-rut {
+    margin-left: 15px
+}
+
+.label-estado {
+    margin-left: 15px
+}
+
+.label-giro {
+    margin-left: 15px
+}
+
+.label-region {
+    margin-left: 15px
+}
+
+.label-comuna {
+    margin-left: 15px
+}
+
+.label-telefono {
+    margin-left: 100px
+}
+
+.label-cargo {
+    margin-left: 45px
+}
+
+#formulario {
+    margin: auto;
+}

@@ -1,0 +1,17 @@
+input {
+    background: #FFFF33;
+    height: 100%;
+}
+
+body {
+    background: rgb(163, 163, 163);
+
+}
+
+#btn-ingresar {
+    background: green;
+}
+
+#btn-recuperar-constrasena {
+    background: #FF8000
+}
