@@ -10,7 +10,7 @@ import "../../styles/navbar.css"
 
 
 
-export const Homes = () => {
+export const Home = () => {
 
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ export const Homes = () => {
             </Link>
           </div>
           <div className="col-8 text-center justify-content-start ">
-            <h3>HOME</h3>
+            <h3>HOMES</h3>
           </div>
           <div className="col-2 text-end">
             
