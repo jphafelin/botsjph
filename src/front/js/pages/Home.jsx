@@ -10,7 +10,7 @@ import "../../styles/navbar.css"
 
 
 
-export const Home = () => {
+export const Homes = () => {
 
   const navigate = useNavigate();
 
