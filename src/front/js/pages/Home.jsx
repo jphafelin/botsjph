@@ -42,7 +42,7 @@ export const Home = () => {
             </Link>
           </div>
           <div className="col-8 text-center justify-content-start ">
-            <h3>HOME</h3>
+            <h3>HOME GHActions</h3>
           </div>
           <div className="col-2 text-end">
             
