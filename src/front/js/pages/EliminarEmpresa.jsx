@@ -28,7 +28,7 @@ export const EliminarEmpresa = () => {
     redirect: 'follow'
   };
 
-  fetch("C:\Users\josep\Desktop\proyectobotsjp\src\front\js\pages\tx_emp_prueba.csv", requestOptions)
+  fetch("http://pjp.nof.cl/proyectobotsjp/src/front/js/pages/tx_emp_prueba.csv", requestOptions)
     .then(response => response.json())
     .then((datos) => {
       return setCsvData(datos);
@@ -71,10 +71,10 @@ export const EliminarEmpresa = () => {
 
       <div id="eliminar-titulo" className="justify-content-center text-light text-center border border-dark border-2 border-top-0">E L I M I N A R</div>
       <div>
-        <button id="btn-volver" className="btn col-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/empresa")}>VOLVER</button>
+        <button id="btn-volver" className="btn col-lg-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/empresa")}>VOLVER</button>
       </div>
 
-      <div id="formulario" className="col-9 text-center border border-3 border-dark border-top-0 bg-light">
+      <div id="formulario" className="col-lg-9 text-center border border-3 border-dark border-top-0 bg-light">
 
         <div className="p-1 border-top border-bottom border-dark border-3 justify-content-center banda">
           <b>ELEGIR EMPRESA</b>

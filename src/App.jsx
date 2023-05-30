@@ -6,6 +6,7 @@ import { Home } from './front/js/pages/Home';
 import { IngresarUsuarioYContrasena } from './front/js/pages/IngresarUsuarioYContrasena';
 import { MenuPrincipal } from './front/js/pages/MenuPrincipal';
 import { Empresa } from './front/js/pages/Empresa';
+import { IngresarEmpresa } from './front/js/pages/IngresarEmpresa';
 import { EliminarEmpresa } from './front/js/pages/EliminarEmpresa';
 import { Footer } from './front/js/component/footer';
 
@@ -29,6 +30,7 @@ const Layout = () => {
             <Route element={<IngresarUsuarioYContrasena />} path="/login" />
             <Route element={<MenuPrincipal />} path="/menu" />
             <Route element={<Empresa />} path="/empresa" />
+            <Route element={<IngresarEmpresa />} path="/ingresar_empresa" />
             <Route element={<EliminarEmpresa />} path="/eliminar_empresa" />
 
 

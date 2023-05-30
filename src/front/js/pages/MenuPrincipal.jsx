@@ -39,7 +39,7 @@ export const MenuPrincipal = () => {
 
 		</nav>
 
-      <div id="formulario" className="col-3 text-center p-5 my-5 border border-3 border-dark bg-light">
+      <div id="formulario" className="col col-lg-3 col-md-12 text-center p-5 my-5 border border-3 border-dark bg-light">
         <div className="row justify-content-center mb-3">
           <button className="bg-primary col-10 justify border border-3 border-dark text-light" onClick={empresa=> navigate("/empresa")}>EMPRESA</button>
         </div>

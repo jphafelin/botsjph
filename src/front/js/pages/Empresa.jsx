@@ -40,11 +40,11 @@ export const Empresa = () => {
      
       <div>
 
-        <button id="btn-volver" className="btn col-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/menu")}>VOLVER</button>
+        <button id="btn-volver" className="btn col col-lg-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/menu")}>VOLVER</button>
 
       </div>
 
-      <div id="formulario" className="col-3 text-center p-5 border border-3 border-dark bg-light">
+      <div id="formulario" className="col col-lg-3 col-md-12   text-center p-5 border border-3 border-dark bg-light">
         <div className="row justify-content-center mb-3">
           <button id="btn-ingresar" className="col-10 justify border border-3 border-dark text-light" onClick={IngresarEmpresa=> navigate("/ingresar_empresa")}>I N G R E S A R</button>
         </div>
@@ -66,7 +66,7 @@ export const Empresa = () => {
 
       <div className="text-end pt-5">
         
-        <button id="btn-volver" className="col-1 m-4 justify border border-3 border-dark text-light" onClick={menu=> navigate("/menu")}>MENU</button>
+        <button id="btn-volver" className="col-lg-1 m-4 justify border border-3 border-dark text-light" onClick={menu=> navigate("/menu")}>MENU</button>
         
       </div>
 
