@@ -22,8 +22,8 @@ jobs:
           server: 186.67.10.116
           username: jphafelin
           password: Newoffice.01
-          local-dir: ./dist
-          server-dir: ./dist
+          local-dir: ./dist/
+          server-dir: ./dist/
       
 
 
