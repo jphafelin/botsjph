@@ -28,7 +28,7 @@ export const EliminarEmpresa = () => {
     redirect: 'follow'
   };
 
-  fetch("./tx_emp_prueba.csv", requestOptions)
+  fetch("http://csvjp.nof.cl/tx_emp_prueba.csv", requestOptions)
     .then(response => response.json())
     .then((datos) => {
       return setCsvData(datos);
@@ -55,7 +55,7 @@ export const EliminarEmpresa = () => {
             </Link>
           </div>
           <div className="col-8 text-center justify-content-start ">
-            <h3>ELIMINAR EMPRESA EJEMPLO</h3>
+            <h3>ELIMINAR EMPRESA</h3>
           </div>
           <div className="col-2 text-end">
             <p>X04-E1</p>
