@@ -1,0 +1,29 @@
+name: GitHub Actions Deploy App
+on: 
+  push: 
+    branches:
+      - main
+
+jobs: 
+  deployOnDev:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm run build
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: 186.67.10.116
+          username: jphafelin
+          password: Newoffice.01
+          local-dir: ./dist/
+          server-dir: ./dist/
+      
+
+
