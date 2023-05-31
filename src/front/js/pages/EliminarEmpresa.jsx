@@ -28,7 +28,7 @@ export const EliminarEmpresa = () => {
     redirect: 'follow'
   };
 
-  fetch("http://pjp.nof.cl/proyectobotsjp/src/front/js/pages/tx_emp_prueba.csv", requestOptions)
+  fetch("./tx_emp_prueba.csv", requestOptions)
     .then(response => response.json())
     .then((datos) => {
       return setCsvData(datos);
