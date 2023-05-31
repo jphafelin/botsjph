@@ -9,6 +9,7 @@ import "../../styles/navbar.css"
 
 import Papa from 'papaparse';
 import "moment";
+
 //import axios from 'axios';
 
 
@@ -30,6 +31,7 @@ export const IngresarEmpresa = () => {
         const csvDataArray = csvRows.map(row => row.split(","));
         setId(csvDataArray.length-1);
         setCsvData(csvDataArray);
+        
 
       })
       .catch(error => console.error(error));
