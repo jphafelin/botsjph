@@ -22,27 +22,31 @@ export const IngresarEmpresa = () => {
   const [csvData, setCsvData] = useState([]);
   const [id, setId] = useState("");
 
+  var requestOptions = {
+    method: 'GET',
+  }
 
   useEffect(() => {
-    fetch("./tx_emp_prueba.csv")
-      .then(response => response.text())
-      .then(csvText => {
-        const csvRows = csvText.split("\n");
-        const csvDataArray = csvRows.map(row => row.split(","));
-        setId(csvDataArray.length-1);
-        setCsvData(csvDataArray);
-        
 
-      })
-      .catch(error => console.error(error));
-  }, []);
+    fetch('http://csvjp.nof.cl/tx_emp_prueba.csv', requestOptions)
+    .then(response => response.text())
+    .then(datos => {
+      console.log(datos)
 
-  
+      const options = {
+        delimiter:";"
+      } // dummy options
+      const jsonObjet = Papa.parse(datos, options)
+      
+
+      console.log(jsonObjet)
+      setId(csvData.length-1);
+      return setCsvData(jsonObjet.data)
+    })
+
+  },[]);
 
 
-
- 
-  
 
   const [value, setValue] = useState("");
   const [value2, setValue2] = useState("");
@@ -206,10 +210,11 @@ export const IngresarEmpresa = () => {
   }
   const grabar = () =>{
 
-    var moment = require('moment');
+    //var moment = require('moment');
  
 	// obtener el nombre del mes, día del mes, año, hora
-	  var now = moment().format("DD/MM/YYYY HH:mm");
+	  //var now = moment().format("DD/MM/YYYY HH:mm");
+    var now = "hora";
 
     listaIngresar.push(id.toString());
     listaIngresar.push(value.toUpperCase());
@@ -237,23 +242,24 @@ export const IngresarEmpresa = () => {
     
     console.log("ESTA ES LA LISTA", listaIngresar);
 
-    setCsvData(listaIngresar);
+    setCsvData([...csvData, listaIngresar]);
 
-    console.log("NUEVA LISTA", csvData);
+    console.log("NUEVA LISTA", csvData);  
+
 
     
 
-  const csv = Papa.unparse(csvData); // Convierte el array a CSV
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" }); // Crea un objeto Blob
-  const url = URL.createObjectURL(blob); // Crea una URL para descargar el archivo
+  //const csv = Papa.unparse(csvData); // Convierte el array a CSV
+  //const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" }); // Crea un objeto Blob
+  //const url = URL.createObjectURL(blob); // Crea una URL para descargar el archivo
 
   // Crea un enlace y lo simula para descargar el archivo
-  const link = document.createElement("a");
-  link.setAttribute("href", url);
-  link.setAttribute("download", "data.csv");
-  document.body.appendChild(link);
+  //const link = document.createElement("a");
+  //link.setAttribute("href", url);
+  //link.setAttribute("download", "data.csv");
+  //document.body.appendChild(link);
   //link.click();
-  document.body.removeChild(link);
+  //document.body.removeChild(link);
   console.log("HECHO")
 
      
@@ -264,10 +270,10 @@ export const IngresarEmpresa = () => {
    
 
        
-       //alert("Empresa Creada")
-       //navigate("/empresa")
+       alert("Empresa Creada")
+       navigate("/empresa")
        
-       //location.reload();
+       location.reload();
       
 
      

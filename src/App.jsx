@@ -8,6 +8,7 @@ import { MenuPrincipal } from './front/js/pages/MenuPrincipal';
 import { Empresa } from './front/js/pages/Empresa';
 import { IngresarEmpresa } from './front/js/pages/IngresarEmpresa';
 import { EliminarEmpresa } from './front/js/pages/EliminarEmpresa';
+import { EliminarEmpresaId } from './front/js/pages/EliminarEmpresaId';
 import { Footer } from './front/js/component/footer';
 
 
@@ -32,6 +33,8 @@ const Layout = () => {
             <Route element={<Empresa />} path="/empresa" />
             <Route element={<IngresarEmpresa />} path="/ingresar_empresa" />
             <Route element={<EliminarEmpresa />} path="/eliminar_empresa" />
+            <Route element={<EliminarEmpresaId />} path="/eliminar_empresa/empresa_actual" />
+       
 
 
 
