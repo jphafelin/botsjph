@@ -9,6 +9,8 @@ import "../../styles/navbar.css"
 import { data } from "./datos";
 
 
+import FTP from "ftp";
+
 
 
 
@@ -16,6 +18,18 @@ import { data } from "./datos";
 
 
 export const Home = () => {
+
+  
+
+  var config = {
+    host: 'localhost',
+    port: 21,
+    user: 'anonymous',
+    password: 'anonymous@'
+}
+
+client = new FTP(config, options);
+
   const [personas, setPersonas] = useState(data);
   
   console.log(personas);
