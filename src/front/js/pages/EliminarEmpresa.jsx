@@ -20,46 +20,31 @@ export const EliminarEmpresa = () => {
     method: 'GET',
   }
 
-<<<<<<< HEAD
   useEffect(() => {
 
     fetch('http://csvjp.nof.cl/tx_emp_prueba.csv', requestOptions)
-=======
-  fetch('http://csvjp.nof.cl/tx_emp_prueba.csv', requestOptions)
->>>>>>> 925a009555378e19a13ecfffa28fc809f53944dc
     .then(response => response.text())
     .then(datos => {
       console.log(datos)
 
       const options = {
-<<<<<<< HEAD
         delimiter:";"
-=======
-        delimiter:","
->>>>>>> 925a009555378e19a13ecfffa28fc809f53944dc
       } // dummy options
       const jsonObjet = Papa.parse(datos, options)
 
       console.log(jsonObjet)
       return setCsvData(jsonObjet.data)
     })
-<<<<<<< HEAD
 
   },[]);
   
-=======
->>>>>>> 925a009555378e19a13ecfffa28fc809f53944dc
 
   function editAdmin(key, user) {
     console.log(key)
 
     localStorage.setItem('id_empresa', key)
 
-<<<<<<< HEAD
     return navigate('/eliminar_empresa/empresa_actual')
-=======
-    return navigate('/eliminar_empresa/1')
->>>>>>> 925a009555378e19a13ecfffa28fc809f53944dc
   }
 
   return (
@@ -153,11 +138,7 @@ export const EliminarEmpresa = () => {
 
         <div className="eleccion">
           {csvData
-<<<<<<< HEAD
             .slice(1,-1)
-=======
-            .slice(1)
->>>>>>> 925a009555378e19a13ecfffa28fc809f53944dc
             .filter(row => {
               if (
                 searchTerm === '' &&
@@ -182,11 +163,7 @@ export const EliminarEmpresa = () => {
                 onClick={() => editAdmin(row[0], row[1])}
               >
                 <div className="col-2 border border-dark">
-<<<<<<< HEAD
                   <b>{row[2] + '-' + row[21]}</b>
-=======
-                  <b>{row[2] + '-' + row[3]}</b>
->>>>>>> 925a009555378e19a13ecfffa28fc809f53944dc
                 </div>
                 <div className="col-8 border border-dark text-start">
                   <b className="mx-2">{row[1]}</b>
@@ -202,8 +179,4 @@ export const EliminarEmpresa = () => {
       <div className="row justify-content-center m-3"></div>
     </div>
   )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 925a009555378e19a13ecfffa28fc809f53944dc
