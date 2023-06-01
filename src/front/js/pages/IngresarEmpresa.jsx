@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-
-
 import "../../styles/botones.css"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
@@ -31,19 +29,21 @@ export const IngresarEmpresa = () => {
     fetch('http://csvjp.nof.cl/tx_emp_prueba.csv', requestOptions)
     .then(response => response.text())
     .then(datos => {
-      console.log(datos)
+      console.log(datos);
 
       const options = {
         delimiter:";"
       } // dummy options
-      const jsonObjet = Papa.parse(datos, options)
+      const jsonObjet = Papa.parse(datos, options);
       
 
-      console.log(jsonObjet)
-      setId(csvData.length-1);
-      return setCsvData(jsonObjet.data)
-    })
-
+      console.log(jsonObjet);
+      
+      return setCsvData(jsonObjet.data);
+    });
+    console.log("soy csvData", csvData)
+    setId(csvData.length-1);
+    console.log(id);
   },[]);
 
 
@@ -270,10 +270,10 @@ export const IngresarEmpresa = () => {
    
 
        
-       alert("Empresa Creada")
-       navigate("/empresa")
+       //alert("Empresa Creada")
+       //navigate("/empresa")
        
-       location.reload();
+       //location.reload();
       
 
      

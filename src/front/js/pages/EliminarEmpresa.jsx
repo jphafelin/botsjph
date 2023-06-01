@@ -25,16 +25,24 @@ export const EliminarEmpresa = () => {
     fetch('http://csvjp.nof.cl/tx_emp_prueba.csv', requestOptions)
     .then(response => response.text())
     .then(datos => {
-      console.log(datos)
+      //console.log(datos);
 
       const options = {
         delimiter:";"
       } // dummy options
       const jsonObjet = Papa.parse(datos, options)
 
-      console.log(jsonObjet)
-      return setCsvData(jsonObjet.data)
+      setTimeout(function(){
+        setCsvData(jsonObjet.data)
+        console.log("csvData", csvData);
+    }, 500);
+
+      
+      return
     })
+
+
+    
 
   },[]);
   
@@ -45,7 +53,11 @@ export const EliminarEmpresa = () => {
     localStorage.setItem('id_empresa', key)
 
     return navigate('/eliminar_empresa/empresa_actual')
+
+    
   }
+
+  console.log("csvData", csvData);
 
   return (
     <div className="containter justify-content-center">
@@ -151,7 +163,7 @@ export const EliminarEmpresa = () => {
                   .toUpperCase()
                   .includes(searchTerm.toUpperCase()) &&
                 row[1].toUpperCase().includes(searchTerm2.toUpperCase()) &&
-                row[6].toUpperCase().includes(searchTerm3.toUpperCase())
+                row[5].toUpperCase().includes(searchTerm3.toUpperCase())
               ) {
                 return row
               }
@@ -169,7 +181,7 @@ export const EliminarEmpresa = () => {
                   <b className="mx-2">{row[1]}</b>
                 </div>
                 <div className="col-2 border border-dark">
-                  <b>{row[6]}</b>
+                  <b>{row[5]}</b>
                 </div>
               </div>
             ))}
@@ -177,6 +189,8 @@ export const EliminarEmpresa = () => {
       </div>
 
       <div className="row justify-content-center m-3"></div>
+
+      <button onClick={boton => console.log(csvData)}>boton</button>
     </div>
   )
 }
