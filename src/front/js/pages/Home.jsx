@@ -13,6 +13,8 @@ import { data } from "./datos";
 
 
 
+
+
 export const Home = () => {
   const [personas, setPersonas] = useState(data);
   

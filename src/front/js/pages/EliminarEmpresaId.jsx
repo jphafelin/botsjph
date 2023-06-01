@@ -16,7 +16,8 @@ export const EliminarEmpresaId = () => {
   var requestOptions = {
     method: 'GET',
   }
-
+  console.log("csvData2", csvData2);
+  
   useEffect(() => {
 
     fetch('http://csvjp.nof.cl/tx_emp_prueba.csv', requestOptions)
@@ -29,13 +30,13 @@ export const EliminarEmpresaId = () => {
       } // dummy options
       const jsonObjet = Papa.parse(datos, options)
 
-      setTimeout(function(){
+      
         setCsvData2(jsonObjet.data)
-        console.log("csvData2", csvData2);
-    }, 500);
+        
+    
 
       
-      return
+      return 
     })
 
 

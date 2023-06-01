@@ -32,10 +32,10 @@ export const EliminarEmpresa = () => {
       } // dummy options
       const jsonObjet = Papa.parse(datos, options)
 
-      setTimeout(function(){
+   
         setCsvData(jsonObjet.data)
         console.log("csvData", csvData);
-    }, 500);
+    
 
       
       return

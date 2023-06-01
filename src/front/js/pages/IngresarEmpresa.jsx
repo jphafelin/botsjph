@@ -38,11 +38,11 @@ export const IngresarEmpresa = () => {
       
 
       console.log(jsonObjet);
-      
+      setId(jsonObjet.data.length-1);
       return setCsvData(jsonObjet.data);
     });
     console.log("soy csvData", csvData)
-    setId(csvData.length-1);
+    
     console.log(id);
   },[]);
 
