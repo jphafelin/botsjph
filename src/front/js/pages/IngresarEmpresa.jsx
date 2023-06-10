@@ -15,6 +15,9 @@ import "moment";
 
 export const IngresarEmpresa = () => {
 
+  const currentDate = new Date().toLocaleDateString();
+	const currentTime = new Date().toLocaleTimeString();
+
   const navigate = useNavigate();
   const listaIngresar = [];
   const [csvData, setCsvData] = useState([]);
@@ -26,22 +29,18 @@ export const IngresarEmpresa = () => {
 
   useEffect(() => {
 
-    fetch('http://csvjp.nof.cl/tx_emp_prueba.csv', requestOptions)
-    .then(response => response.text())
+    fetch('http://localhost/api/empresas/', requestOptions)
+    .then(response => response.json())
     .then(datos => {
       console.log(datos);
 
-      const options = {
-        delimiter:";"
-      } // dummy options
-      const jsonObjet = Papa.parse(datos, options);
       
-
-      console.log(jsonObjet);
-      setId(jsonObjet.data.length-1);
-      return setCsvData(jsonObjet.data);
+      setId(datos.length+1);
+      return setCsvData(datos);
     });
     console.log("soy csvData", csvData)
+    //etCsvData(csvData.slice(0, -1)); //eliminar la ultima fila
+    //console.log("soy csvData cortada", csvData)
     
     console.log(id);
   },[]);
@@ -210,41 +209,82 @@ export const IngresarEmpresa = () => {
   }
   const grabar = () =>{
 
+    var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+  "razonSocial": value.toUpperCase(),
+  "giro": value4.toUpperCase(),
+  "rut": value2,
+  "digitoVerificador": value15.toUpperCase(),
+  "estado": selectedOption,
+  "nombreFantasia": value3.toUpperCase(),
+  "direccionFacturacion": value5.toUpperCase(),
+  "region": selectedOption2,
+  "comunaFacturacion": value6.toUpperCase(),
+  "nombreContactoFacturacion": value7.toUpperCase(),
+  "telefonoContactoFacturacion": value8.toUpperCase(),
+  "emailContactoFacturacion": value9.toUpperCase(),
+  "cargoContactoFacturacion": value10.toUpperCase(),
+  "nombreContactoCobranza": value11.toUpperCase(),
+  "telefonoContactoCobranza": value12.toUpperCase(),
+  "emailContactoCobranza": value13.toUpperCase(),
+  "cargoContactoCobranza": value14.toUpperCase(),
+  "usuarioCreador": "5",
+  "fechaCreacion": `${currentDate} ${currentTime}`,
+  "usuarioUltimaModificacion": "3",
+  
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://localhost/api/empresas/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
     //var moment = require('moment');
  
 	// obtener el nombre del mes, día del mes, año, hora
 	  //var now = moment().format("DD/MM/YYYY HH:mm");
-    var now = "hora";
+    //var now = "hora";
 
-    listaIngresar.push(id.toString());
-    listaIngresar.push(value.toUpperCase());
-    listaIngresar.push(value2.toUpperCase());
-    listaIngresar.push(value3.toUpperCase());
-    listaIngresar.push(value4.toUpperCase());
-    listaIngresar.push(value5.toUpperCase());
-    listaIngresar.push(value6.toUpperCase());
-    listaIngresar.push(value7.toUpperCase());
-    listaIngresar.push(value8.toUpperCase());
-    listaIngresar.push(value9.toUpperCase());
-    listaIngresar.push(value10.toUpperCase());
-    listaIngresar.push(value11.toUpperCase());
-    listaIngresar.push(value12.toUpperCase());
-    listaIngresar.push(value13.toUpperCase());
-    listaIngresar.push(value14.toUpperCase());
-    listaIngresar.push(value15.toUpperCase());
-    listaIngresar.push("1");
-    listaIngresar.push(now.toUpperCase());
-    listaIngresar.push("1");
-    listaIngresar.push(now.toUpperCase());
-    listaIngresar.push(selectedOption.toUpperCase());
-    listaIngresar.push(selectedOption2.toUpperCase());
+    //listaIngresar.push(id.toString());
+    //listaIngresar.push(value.toUpperCase());
+    //listaIngresar.push(value2.toUpperCase());
+    //listaIngresar.push(value3.toUpperCase());
+    //listaIngresar.push(value4.toUpperCase());
+    //listaIngresar.push(selectedOption.toUpperCase());
+    //listaIngresar.push(value5.toUpperCase());
+    //listaIngresar.push(selectedOption2.toUpperCase());
+    //listaIngresar.push(value6.toUpperCase());
+    //listaIngresar.push(value7.toUpperCase());
+    //listaIngresar.push(value8.toUpperCase());
+    //listaIngresar.push(value9.toUpperCase());
+    //listaIngresar.push(value10.toUpperCase());
+    //listaIngresar.push(value11.toUpperCase());
+    //listaIngresar.push(value12.toUpperCase());
+    //listaIngresar.push(value13.toUpperCase());
+    //listaIngresar.push(value14.toUpperCase());
+    //listaIngresar.push(value15.toUpperCase());
+    //listaIngresar.push("1");
+    //listaIngresar.push(now.toUpperCase());
+    //listaIngresar.push("1");
+    //listaIngresar.push(now.toUpperCase());
+    
+    
 
     
-    console.log("ESTA ES LA LISTA", listaIngresar);
+    //console.log("ESTA ES LA LISTA", listaIngresar);
 
-    setCsvData([...csvData, listaIngresar]);
+    //setCsvData([...csvData, listaIngresar]);
 
-    console.log("NUEVA LISTA", csvData);  
+    //console.log("NUEVA LISTA", csvData);  
 
 
     
@@ -253,7 +293,7 @@ export const IngresarEmpresa = () => {
   //const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" }); // Crea un objeto Blob
   //const url = URL.createObjectURL(blob); // Crea una URL para descargar el archivo
 
-  // Crea un enlace y lo simula para descargar el archivo
+   //Crea un enlace y lo simula para descargar el archivo
   //const link = document.createElement("a");
   //link.setAttribute("href", url);
   //link.setAttribute("download", "data.csv");
@@ -270,19 +310,13 @@ export const IngresarEmpresa = () => {
    
 
        
-       //alert("Empresa Creada")
-       //navigate("/empresa")
+       alert("Empresa Creada")
+       navigate("/empresa")
        
        //location.reload();
       
+ 
 
-     
-     
-     
-     //return (
-     //    <div class="alert alert-primary" role="alert">
-     //        A simple primary alert—check it out!
-     //    </div>)
  }
 
 

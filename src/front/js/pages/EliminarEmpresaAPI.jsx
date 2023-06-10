@@ -5,40 +5,33 @@ import logo from '../../img/LogoNewOffice.jpeg'
 import '../../styles/navbar.css'
 import '../../styles/botones.css'
 
-import Papa from 'papaparse'
 
-export const EliminarEmpresa = () => {
+
+export const EliminarEmpresaAPI = () => {
   const navigate = useNavigate()
 
   const [searchTerm, setSearchTerm] = useState('')
   const [searchTerm2, setSearchTerm2] = useState('')
   const [searchTerm3, setSearchTerm3] = useState('')
 
-  const [csvData, setCsvData] = useState([])
+  const [csvData, setCsvData] = useState([]);
+
+
 
   var requestOptions = {
     method: 'GET',
   }
+  console.log("csvData", csvData);
 
   useEffect(() => {
 
-    fetch('http://csvjp.nof.cl/tx_emp_prueba.csv', requestOptions)
-    .then(response => response.text())
+    fetch('http://localhost/api/empresas', requestOptions)
+    .then(response => response.json())
     .then(datos => {
-      //console.log(datos);
 
-      const options = {
-        delimiter:";"
-      } // dummy options
-      const jsonObjet = Papa.parse(datos, options)
+        setCsvData(datos);
 
-   
-        setCsvData(jsonObjet.data)
-        console.log("csvData", csvData);
-    
-
-      
-      return
+      return 
     })
 
 
@@ -57,8 +50,6 @@ export const EliminarEmpresa = () => {
     
   }
 
-  console.log("csvData", csvData);
-
   return (
     <div className="containter justify-content-center">
       <nav className="navbar p-1">
@@ -69,7 +60,7 @@ export const EliminarEmpresa = () => {
             </Link>
           </div>
           <div className="col-8 text-center justify-content-start ">
-            <h3>ELIMINAR EMPRESA</h3>
+            <h3>ELIMINAR EMPRESA CON API</h3>
           </div>
           <div className="col-2 text-end">
             <p>X04-E1</p>
@@ -150,47 +141,28 @@ export const EliminarEmpresa = () => {
 
         <div className="eleccion">
           {csvData
-            .slice(1,-1)
-            .filter(row => {
-              if (
-                searchTerm === '' &&
-                searchTerm2 === '' &&
-                searchTerm3 === ''
-              ) {
-                return row
-              } else if (
-                (row[2] + '-' + row[3])
-                  .toUpperCase()
-                  .includes(searchTerm.toUpperCase()) &&
-                row[1].toUpperCase().includes(searchTerm2.toUpperCase()) &&
-                row[5].toUpperCase().includes(searchTerm3.toUpperCase())
-              ) {
-                return row
-              }
-            })
-            .map((row, index) => (
-              <div
-                className="d-flex"
-                key={index}
-                onClick={() => editAdmin(row[0], row[1])}
-              >
-                <div className="col-2 border border-dark">
-                  <b>{row[2] + '-' + row[21]}</b>
-                </div>
-                <div className="col-8 border border-dark text-start">
-                  <b className="mx-2">{row[1]}</b>
-                </div>
-                <div className="col-2 border border-dark">
-                  <b>{row[5]}</b>
-                </div>
-              </div>
-            ))}
+          
+
+          .filter(item => {
+            const searchRegex = new RegExp(searchTerm, 'i');
+            const searchRegex2 = new RegExp(searchTerm2, 'i');
+            const searchRegex3 = new RegExp(searchTerm3, 'i');
+          
+            return searchRegex.test(item.rut) && searchRegex2.test(item.razonSocial) && searchRegex3.test(item.estado);
+          })
+          .map((item, key = item.id) => (
+            <div key={key} className="d-flex" onClick={()=>editAdmin(item.id)}>
+              <div className="col-2 border border-dark"><b>{item.rut}</b></div>
+              <div className="col-8 border border-dark text-start"><b className="mx-2">{item.razonSocial}</b></div>
+              <div className="col-2 border border-dark"><b>{item.estado}</b></div>
+            </div>
+          ))}
         </div>
       </div>
 
       <div className="row justify-content-center m-3"></div>
 
-      <button onClick={boton => console.log(csvData)}>boton</button>
+     
     </div>
   )
 }

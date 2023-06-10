@@ -6,9 +6,17 @@ import { Home } from './front/js/pages/Home';
 import { IngresarUsuarioYContrasena } from './front/js/pages/IngresarUsuarioYContrasena';
 import { MenuPrincipal } from './front/js/pages/MenuPrincipal';
 import { Empresa } from './front/js/pages/Empresa';
+
 import { IngresarEmpresa } from './front/js/pages/IngresarEmpresa';
-import { EliminarEmpresa } from './front/js/pages/EliminarEmpresa';
+import { EliminarEmpresaAPI } from './front/js/pages/EliminarEmpresaAPI';
 import { EliminarEmpresaId } from './front/js/pages/EliminarEmpresaId';
+
+import { ModificarEmpresaAPI } from './front/js/pages/ModificarEmpresaAPI';
+import { ModificarEmpresaId } from './front/js/pages/ModificarEmpresaId';
+
+
+
+
 import { Footer } from './front/js/component/footer';
 
 
@@ -32,8 +40,13 @@ const Layout = () => {
             <Route element={<MenuPrincipal />} path="/menu" />
             <Route element={<Empresa />} path="/empresa" />
             <Route element={<IngresarEmpresa />} path="/ingresar_empresa" />
-            <Route element={<EliminarEmpresa />} path="/eliminar_empresa" />
+            <Route element={<EliminarEmpresaAPI />} path="/eliminar_empresa" />
             <Route element={<EliminarEmpresaId />} path="/eliminar_empresa/empresa_actual" />
+            <Route element={<ModificarEmpresaAPI />} path="/modificar_empresa" />
+            <Route element={<ModificarEmpresaId />} path="/modificar_empresa/empresa_actual" />
+  
+
+            
        
 
 

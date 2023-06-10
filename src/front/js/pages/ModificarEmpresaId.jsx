@@ -11,7 +11,7 @@ import "../../styles/navbar.css"
 
 
 
-export const EliminarEmpresaId = () => {
+export const ModificarEmpresaId = () => {
 
 
 
@@ -26,7 +26,7 @@ export const EliminarEmpresaId = () => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost/api/empresas/" + id_empresa, requestOptions)
+    fetch("http://localhost/api/empresas/1" , requestOptions)
       .then(response => response.json())
       .then((datos) => {
 
@@ -37,16 +37,39 @@ export const EliminarEmpresaId = () => {
 
 
 
-      });
-  }, []);
 
+      });
+    
+      
+  }, []);
 
   console.log(csvData);
 
+  const [value, setValue] = useState(`${csvData.razonSocial}`);
+  const [value2, setValue2] = useState(`${csvData.rut}`);
+  const [value3, setValue3] = useState(`${csvData.digitoVerificador}`);
+  const [value4, setValue4] = useState(`${csvData.nombreFantasia}`);
+  const [value5, setValue5] = useState(`${csvData.giro}`);
+  const [value6, setValue6] = useState(`${csvData.direccionFacturacion}`);
 
+  
+  const [value7, setValue7] = useState(`${csvData.comunaFacturacion}`);
+  const [value8, setValue8] = useState(`${csvData.nombreContactoFacturacion}`);
+  const [value9, setValue9] = useState(`${csvData.telefonoContactoFacturacion}`);
+  const [value10, setValue10] = useState(`${csvData.emailContactoFacturacion}`);
+  const [value11, setValue11] = useState(`${csvData.cargoContactoFacturacion}`);
+  const [value12, setValue12] = useState(`${csvData.nombreContactoCobranza}`);
+  const [value13, setValue13] = useState(`${csvData.telefonoContactoCobranza}`);
+  const [value14, setValue14] = useState(`${csvData.emailContactoCobranza}`);
+  const [value15, setValue15] = useState(`${csvData.cargoContactoCobranza}`);
+  const [value16, setValue16] = useState(`${csvData.usuarioUltimaModificacion}`);
+  const [value17, setValue17] = useState(`${csvData.fechaUltimaModificacion}`);
 
+  
+  const [selectedOption, setSelectedOption] = useState(`${csvData.rut}`);
+  const [selectedOption2, setSelectedOption2] = useState(`${csvData.rut}`);
 
-
+  
 
 
 
@@ -85,7 +108,7 @@ export const EliminarEmpresaId = () => {
       "fechaCreacion": `${csvData.fechaCreacion}`,
       "fechaUltimaModificacion": `${currentDate} ${currentTime}`,
       "usuarioUltimaModificacion": "USUARIO MOD",
-      "estado": "NO VIGENTE"
+      "estado": `${csvData.estado}`
     });
 
     var requestOptions = {
@@ -100,7 +123,7 @@ export const EliminarEmpresaId = () => {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
 
-    alert("Empresa Eliminada")
+    alert("Empresa Modificada")
     navigate("/empresa")
 
     location.reload();
@@ -122,7 +145,7 @@ export const EliminarEmpresaId = () => {
             </Link>
           </div>
           <div className="col-8 text-center justify-content-start ">
-            <h3>ELIMINAR EMPRESA ACTUAL</h3>
+            <h3>MODIFICAR EMPRESA ACTUAL</h3>
           </div>
           <div className="col-2 text-end">
             <p>X04-E2</p>
@@ -136,10 +159,10 @@ export const EliminarEmpresaId = () => {
 
       </nav>
 
-      <div id="eliminar-titulo" className="justify-content-center text-light text-center border border-dark border-2 border-top-0">E L I M I N A R</div>
+      <div id="modificar-titulo" className="justify-content-center text-center border border-dark border-2 border-top-0">M O D I F I C A R</div>
       <div>
 
-        <button id="btn-volver" className="btn col-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/eliminar_empresa")}>VOLVER</button>
+        <button id="btn-volver" className="btn col-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/modificar_empresa")}>VOLVER</button>
 
       </div>
 
@@ -149,28 +172,28 @@ export const EliminarEmpresaId = () => {
             <label className="label-id">ID:</label>
             <input className="casilla-id col bg-light rounded" maxLength="4" value={csvData.id} disabled="disabled"></input>
             <label className="label-razon-social">RAZON SOCIAL:</label>
-            <input className=" casilla-razon-social col-6 text-uppercase rounded bg-light" maxLength="45" value={csvData.razonSocial} disabled="disabled"
+            <input className=" casilla-razon-social col-6 text-uppercase rounded" maxLength="45" value={csvData.razonSocial} onChange={ (e)=> {setValue(e.target.value)}}
             ></input>
             <label className="label-rut">RUT:</label>
-            <input className="casilla-rut col-2 text-uppercase rounded bg-light" maxLength="12" value={csvData.rut} disabled="disabled"></input>
+            <input className="casilla-rut col-2 text-uppercase rounded" maxLength="12" value={csvData.rut}></input>
             -
-            <input className="casilla-rut-verificador col-2 text-uppercase rounded bg-light" maxLength="12" value={csvData.digitoVerificador} disabled="disabled"></input>
+            <input className="casilla-rut-verificador col-2 text-uppercase rounded" maxLength="12" value={csvData.digitoVerificador} ></input>
             <label className="label-estado">ESTADO:</label>
             <input className="casilla-rut col-2 text-uppercase rounded bg-light" value={csvData.estado} disabled="disabled">
 
 
             </input>
-          </div>
+          </div>    
 
         </div>
         <div className="row my-2">
           <div className="text-start mx-3">
 
             <label>NOMBRE FANTASIA:</label>
-            <input className="casilla-nombre-fantasia col-6 text-uppercase rounded bg-light" maxLength="40" value={csvData.nombreFantasia} disabled="disabled"
+            <input className="casilla-nombre-fantasia col-6 text-uppercase rounded" maxLength="40" value={csvData.nombreFantasia} 
             ></input>
             <label className="label-giro">GIRO:</label>
-            <input className="casilla-giro col-4 text-uppercase rounded bg-light" maxLength="40" value={csvData.giro} disabled="disabled"
+            <input className="casilla-giro col-4 text-uppercase rounded" maxLength="40" value={csvData.giro} 
             ></input>
           </div>
 
@@ -182,12 +205,12 @@ export const EliminarEmpresaId = () => {
         <div className="row my-1">
           <div className="text-start py-1 mx-3">
             <label>DIRECCION:</label>
-            <input className="casilla-direccion col-4 text-uppercase rounded bg-light" maxLength="40" value={csvData.direccionFacturacion} disabled="disabled"
+            <input className="casilla-direccion col-4 text-uppercase rounded" maxLength="40" value={csvData.direccionFacturacion} 
             ></input>
             <label className="label-region">REGION:</label>
-            <input className="casilla-id col bg-light rounded" maxLength="4" value={csvData.region} disabled="disabled"></input>
+            <input className="casilla-id col  rounded" maxLength="4" value={csvData.region} ></input>
             <label className="label-comuna">COMUNA:</label>
-            <input className="casilla-comuna col-4 text-uppercase rounded bg-light" maxLength="20" value={csvData.comunaFacturacion} disabled="disabled"
+            <input className="casilla-comuna col-4 text-uppercase rounded" maxLength="20" value={csvData.comunaFacturacion} 
             ></input>
           </div>
         </div>
@@ -199,10 +222,10 @@ export const EliminarEmpresaId = () => {
         <div className="row my-2">
           <div className="text-start mx-3">
             <label>NOMBRE:</label>
-            <input className="casilla-nombre col-4 text-uppercase rounded bg-light" maxLength="35" value={csvData.nombreContactoFacturacion} disabled="disabled"
+            <input className="casilla-nombre col-4 text-uppercase rounded" maxLength="35" value={csvData.nombreContactoFacturacion} 
             ></input>
             <label className="label-telefono">TELEFONO:</label>
-            <input className="casilla-telefono col-4 text-uppercase rounded bg-light" maxLength="25" value={csvData.telefonoContactoFacturacion} disabled="disabled"
+            <input className="casilla-telefono col-4 text-uppercase rounded" maxLength="25" value={csvData.telefonoContactoFacturacion} 
             ></input>
           </div>
 
@@ -210,10 +233,10 @@ export const EliminarEmpresaId = () => {
         <div className="row my-2">
           <div className="text-start mx-3">
             <label>EMAIL:</label>
-            <input className="casilla-email col-4 text-uppercase rounded bg-light" maxLength="42" value={csvData.emailContactoFacturacion} disabled="disabled"
+            <input className="casilla-email col-4 text-uppercase rounded " maxLength="42" value={csvData.emailContactoFacturacion} 
             ></input>
             <label className="label-cargo">CARGO:</label>
-            <input className="casilla-cargo col-4 text-uppercase rounded bg-light" maxLength="23" value={csvData.cargoContactoFacturacion} disabled="disabled"
+            <input className="casilla-cargo col-4 text-uppercase rounded " maxLength="23" value={csvData.cargoContactoFacturacion} 
             ></input>
           </div>
 
@@ -224,10 +247,10 @@ export const EliminarEmpresaId = () => {
         <div className="row my-2">
           <div className="text-start mx-3">
             <label>NOMBRE:</label>
-            <input className="casilla-nombre col-4 text-uppercase rounded bg-light" maxLength="35" value={csvData.nombreContactoCobranza} disabled="disabled"
+            <input className="casilla-nombre col-4 text-uppercase rounded" maxLength="35" value={csvData.nombreContactoCobranza} 
             ></input>
             <label className="label-telefono">TELEFONO:</label>
-            <input className="casilla-telefono col-4 text-uppercase rounded bg-light" maxLength="25" value={csvData.telefonoContactoCobranza} disabled="disabled"
+            <input className="casilla-telefono col-4 text-uppercase rounded" maxLength="25" value={csvData.telefonoContactoCobranza} 
             ></input>
           </div>
 
@@ -235,10 +258,10 @@ export const EliminarEmpresaId = () => {
         <div className="row my-2">
           <div className="text-start mx-3">
             <label>EMAIL:</label>
-            <input className="casilla-email col-4 text-uppercase rounded bg-light" maxLength="42" value={csvData.emailContactoCobranza} disabled="disabled"
+            <input className="casilla-email col-4 text-uppercase rounded" maxLength="42" value={csvData.emailContactoCobranza} 
             ></input>
             <label className="label-cargo">CARGO:</label>
-            <input className="casilla-cargo col-4 text-uppercase rounded bg-light" maxLength="23" value={csvData.cargoContactoCobranza} disabled="disabled"
+            <input className="casilla-cargo col-4 text-uppercase rounded" maxLength="23" value={csvData.cargoContactoCobranza} 
             ></input>
           </div>
 
@@ -283,7 +306,7 @@ export const EliminarEmpresaId = () => {
       <div className="col-10">
         <div className="text-end">
 
-          <button id="btn-grabar" className="col-1 justify border border-3 border-dark btn" onClick={grabar}><b>ELIMINAR</b></button>
+          <button id="btn-grabar" className="col-1 justify border border-3 border-dark btn" onClick={grabar}><b>GUARDAR</b></button>
 
 
         </div>

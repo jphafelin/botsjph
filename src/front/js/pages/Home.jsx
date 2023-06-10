@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import logo from "../../img/LogoNewOffice.jpeg";
 import "../../styles/navbar.css"
 
-import { data } from "./datos";
 
 
-import FTP from "ftp";
+
+
 
 
 
@@ -21,18 +21,9 @@ export const Home = () => {
 
   
 
-  var config = {
-    host: 'localhost',
-    port: 21,
-    user: 'anonymous',
-    password: 'anonymous@'
-}
 
-client = new FTP(config, options);
 
-  const [personas, setPersonas] = useState(data);
-  
-  console.log(personas);
+
 
   //useEffect(function (){
     
@@ -73,14 +64,7 @@ client = new FTP(config, options);
       </nav>
 
       <div>
-        {data.map((item, key)=>
-         <div className="d-flex" key={key}>
-         <div className="col-2 border border-dark"><b>{item.id}</b></div>
-         <div className="col-8 border border-dark text-start"><b className="mx-2">{item.rut}</b></div>
-         <div className="col-2 border border-dark"><b>{item.estado}</b></div>
-       </div>
-        
-        )}
+    
       </div>
 
 
