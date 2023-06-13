@@ -1,27 +1,48 @@
 import React, { useState } from "react";
 //import { useHistory } from "react-router-dom";
-
+import { useUsuariosContext } from "../store/usuariosProvider";
 import "../../styles/login.css"
 import { Link } from "react-router-dom";
 import logo from "../../img/LogoNewOffice.jpeg";
 import "../../styles/navbar.css"
 import { useNavigate } from "react-router-dom"
-//import rigoImageUrl from "../../img/Logo.jpg";
-//import Papa from 'papaparse';
+
 
 import "../../styles/home.css";
 
 export const IngresarUsuarioYContrasena = () => {
 
+  const usuarios = useUsuariosContext();
+  console.log("HOLA VENGO DEL CONTEXT", usuarios);
+  const token = localStorage.getItem("token");
+
+
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  function inicioSesion (id, nombre, apellido){
+    localStorage.setItem('id_user', id);
+    localStorage.setItem('nombre_user', nombre);
+    localStorage.setItem('apellido_user', apellido);
+    localStorage.setItem('token', "token");
+
+    navigate("/menu");
+    location.reload();
+  }
 
   //const history = useHistory();
 
   const handleClick = () => {
 
-    console.log("hola");
+    {usuarios
+          
+
+     
+      .map((item) => (
+        username === item.usuario ? (password === item.contrasena ?  inicioSesion(item.id, item.nombre, item.apellido) : console.log("CONTRASEÑA INCORRECTA")) : console.log("adios")
+        
+      ))}
 
   }; 
   //if (store.token && store.token != "" && store.token != undefined) history.push("/menu");
@@ -58,7 +79,7 @@ export const IngresarUsuarioYContrasena = () => {
           <h5 className="bg-primary col-10 justify border border-3 border-dark text-light rounded">USUARIO</h5>
         </div>
         <div className="row justify-content-center mb-3">
-          <input type="text" className="border border-3 border-dark col-10 text-uppercase rounded" value={username} onChange={(e) => setUsername(e.target.value)}></input>
+          <input type="text" className="border border-3 border-dark col-10 text-uppercase rounded" value={username} onChange={(e) => setUsername((e.target.value).toUpperCase())}></input>
         </div>
         <div className="row justify-content-center mb-2">
           <h5 className="bg-primary col-10 justify border border-3 border-dark text-light rounded">CONTRASEÑA</h5>

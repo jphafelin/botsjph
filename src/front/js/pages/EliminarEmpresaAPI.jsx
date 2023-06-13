@@ -8,6 +8,8 @@ import '../../styles/botones.css'
 
 
 export const EliminarEmpresaAPI = () => {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate()
 
   const [searchTerm, setSearchTerm] = useState('')
@@ -40,6 +42,16 @@ export const EliminarEmpresaAPI = () => {
   },[]);
   
 
+  const cerrarSesion = () =>{
+    localStorage.removeItem("id_user");
+    localStorage.removeItem("nombre_user");
+    localStorage.removeItem("apellido_user");
+    localStorage.removeItem("token");
+    navigate("/login");
+    location.reload();
+    
+    }
+
   function editAdmin(key, user) {
     console.log(key)
 
@@ -52,6 +64,8 @@ export const EliminarEmpresaAPI = () => {
 
   return (
     <div className="containter justify-content-center">
+      {token ? (
+        <div>
       <nav className="navbar p-1">
         <div className="container-fluid row">
           <div className="col-2">
@@ -67,7 +81,7 @@ export const EliminarEmpresaAPI = () => {
             <div>
               <button
                 id="cerrar-sesion"
-                className="text-light btn border border-3 border-dark"
+                className="text-light btn border border-3 border-dark" onClick={cerrarSesion}
               >
                 CERRAR SESION
               </button>
@@ -148,11 +162,11 @@ export const EliminarEmpresaAPI = () => {
             const searchRegex2 = new RegExp(searchTerm2, 'i');
             const searchRegex3 = new RegExp(searchTerm3, 'i');
           
-            return searchRegex.test(item.rut) && searchRegex2.test(item.razonSocial) && searchRegex3.test(item.estado);
+            return searchRegex.test(`${item.rut}-${item.digitoVerificador}`) && searchRegex2.test(item.razonSocial) && searchRegex3.test(item.estado);
           })
           .map((item, key = item.id) => (
             <div key={key} className="d-flex" onClick={()=>editAdmin(item.id)}>
-              <div className="col-2 border border-dark"><b>{item.rut}</b></div>
+              <div className="col-2 border border-dark"><b>{item.rut}-{item.digitoVerificador}</b></div>
               <div className="col-8 border border-dark text-start"><b className="mx-2">{item.razonSocial}</b></div>
               <div className="col-2 border border-dark"><b>{item.estado}</b></div>
             </div>
@@ -162,7 +176,9 @@ export const EliminarEmpresaAPI = () => {
 
       <div className="row justify-content-center m-3"></div>
 
-     
+      </div>
+
+):<h1>DEBE INICIAR SESION</h1>}
     </div>
   )
 }

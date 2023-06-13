@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import logo from "../../img/LogoNewOffice.jpeg";
 import "../../styles/navbar.css"
 
-import Papa from 'papaparse';
+
 import "moment";
 
 //import axios from 'axios';
@@ -19,7 +19,12 @@ export const IngresarEmpresa = () => {
 	const currentTime = new Date().toLocaleTimeString();
 
   const navigate = useNavigate();
-  const listaIngresar = [];
+  const idUsuarioActual = localStorage.getItem("id_user");
+  const nombreUsuarioActual = localStorage.getItem("nombre_user");
+  const apellidoUsuarioActual = localStorage.getItem("apellido_user");
+  const token = localStorage.getItem("token");
+
+  const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual} ${apellidoUsuarioActual}`;
   const [csvData, setCsvData] = useState([]);
   const [id, setId] = useState("");
 
@@ -45,6 +50,15 @@ export const IngresarEmpresa = () => {
     console.log(id);
   },[]);
 
+  const cerrarSesion = () =>{
+    localStorage.removeItem("id_user");
+    localStorage.removeItem("nombre_user");
+    localStorage.removeItem("apellido_user");
+    localStorage.removeItem("token");
+    navigate("/login");
+    location.reload();
+    
+    }
 
 
   const [value, setValue] = useState("");
@@ -230,9 +244,9 @@ var raw = JSON.stringify({
   "telefonoContactoCobranza": value12.toUpperCase(),
   "emailContactoCobranza": value13.toUpperCase(),
   "cargoContactoCobranza": value14.toUpperCase(),
-  "usuarioCreador": "5",
+  "usuarioCreador": usuarioActual.toUpperCase(),
   "fechaCreacion": `${currentDate} ${currentTime}`,
-  "usuarioUltimaModificacion": "3",
+  "usuarioUltimaModificacion": "",
   
 });
 
@@ -313,7 +327,7 @@ fetch("http://localhost/api/empresas/", requestOptions)
        alert("Empresa Creada")
        navigate("/empresa")
        
-       //location.reload();
+       location.reload();
       
  
 
@@ -323,6 +337,8 @@ fetch("http://localhost/api/empresas/", requestOptions)
 
   return (
     <div className="containter justify-content-center">
+      {token ? (
+        <div>
       <nav className="navbar p-1">
 			<div className="container-fluid row">
 				<div className="col-2">
@@ -336,7 +352,7 @@ fetch("http://localhost/api/empresas/", requestOptions)
 				<div className="col-2 text-end">
 					<p>X04-I1</p>
 					<div>
-					<button id="cerrar-sesion" className="text-light btn border border-3 border-dark">CERRAR SESION</button>
+					<button id="cerrar-sesion" className="text-light btn border border-3 border-dark" onClick={cerrarSesion}>CERRAR SESION</button>
 					<button id="ayuda"className="mx-2 btn border border-3 border-dark">?</button>
 					</div>
 				</div>
@@ -509,7 +525,9 @@ fetch("http://localhost/api/empresas/", requestOptions)
       </div>
 
 
+      </div>
 
+):<h1>DEBE INICIAR SESION</h1>}
     </div>
   );
 };

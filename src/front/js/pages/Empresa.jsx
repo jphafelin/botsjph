@@ -9,13 +9,34 @@ import "../../styles/navbar.css"
 
 import "../../styles/home.css";
 
+
 export const Empresa = () => {
+
+  const token = localStorage.getItem("token");
+
+
+  const cerrarSesion = () =>{
+    localStorage.removeItem("id_user");
+    localStorage.removeItem("nombre_user");
+    localStorage.removeItem("apellido_user");
+    localStorage.removeItem("token");
+    
+    navigate("/login");
+    location.reload();
+    
+    }
 
   const navigate = useNavigate();
 
+  
+
 
   return (
+
+    
     <div className="containter justify-content-center">
+      {token ? (
+        <div>
       <nav className="navbar p-1">
         <div className="container-fluid row">
           <div className="col-2">
@@ -29,7 +50,7 @@ export const Empresa = () => {
           <div className="col-2 text-end">
             <p>X04-01</p>
             <div>
-              <button id="cerrar-sesion" className="text-light btn border border-3 border-dark">CERRAR SESION</button>
+              <button id="cerrar-sesion" className="text-light btn border border-3 border-dark" onClick={cerrarSesion}>CERRAR SESION</button>
               <button id="ayuda" className="mx-2 btn border border-3 border-dark">?</button>
             </div>
           </div>
@@ -69,8 +90,9 @@ export const Empresa = () => {
         <button id="btn-volver" className="col-lg-1 m-4 justify border border-3 border-dark text-light" onClick={menu=> navigate("/menu")}>MENU</button>
         
       </div>
+      </div>
 
-
+):<h1>DEBE INICIAR SESION</h1>}
 
 
     </div>

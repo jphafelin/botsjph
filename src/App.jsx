@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, {useState} from 'react'
 import ScrollToTop from './front/js/component/scrollToTop';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css'
@@ -13,11 +13,18 @@ import { EliminarEmpresaId } from './front/js/pages/EliminarEmpresaId';
 
 import { ModificarEmpresaAPI } from './front/js/pages/ModificarEmpresaAPI';
 import { ModificarEmpresaId } from './front/js/pages/ModificarEmpresaId';
+import { ConsultarEmpresaAPI } from './front/js/pages/ConsultarEmpresaAPI';
+import { ConsultarEmpresaId } from './front/js/pages/ConsultarEmpresaId';
 
 
 
 
 import { Footer } from './front/js/component/footer';
+import { EmpresasProvider } from './front/js/store/empresasProvider';
+import { UsuariosProvider } from './front/js/store/usuariosProvider';
+
+
+
 
 
 const Layout = () => {
@@ -25,10 +32,12 @@ const Layout = () => {
   // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 
 
-
+  
 
   return (
     <div>
+      <UsuariosProvider>
+      <EmpresasProvider>
       <BrowserRouter >
 
         <ScrollToTop>
@@ -44,6 +53,8 @@ const Layout = () => {
             <Route element={<EliminarEmpresaId />} path="/eliminar_empresa/empresa_actual" />
             <Route element={<ModificarEmpresaAPI />} path="/modificar_empresa" />
             <Route element={<ModificarEmpresaId />} path="/modificar_empresa/empresa_actual" />
+            <Route element={<ConsultarEmpresaAPI />} path="/consultar_empresa" />
+            <Route element={<ConsultarEmpresaId />} path="/consultar_empresa/empresa_actual" />
   
 
             
@@ -57,6 +68,8 @@ const Layout = () => {
           <Footer/>
         </ScrollToTop>
       </BrowserRouter>
+      </EmpresasProvider>
+      </UsuariosProvider>
     </div>
   );
 };

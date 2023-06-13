@@ -11,14 +11,10 @@ import "../../styles/navbar.css"
 
 
 
-export const EliminarEmpresaId = () => {
+export const ConsultarEmpresaId = () => {
 
-  const idUsuarioActual = localStorage.getItem("id_user");
-  const nombreUsuarioActual = localStorage.getItem("nombre_user");
-  const apellidoUsuarioActual = localStorage.getItem("apellido_user");
+
   const token = localStorage.getItem("token");
-
-  const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual} ${apellidoUsuarioActual}`;
 
   const navigate = useNavigate();
   const id_empresa = localStorage.getItem("id_empresa");
@@ -45,7 +41,6 @@ export const EliminarEmpresaId = () => {
       });
   }, []);
 
-
   const cerrarSesion = () =>{
     localStorage.removeItem("id_user");
     localStorage.removeItem("nombre_user");
@@ -56,80 +51,16 @@ export const EliminarEmpresaId = () => {
     
     }
 
+
   console.log(csvData);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  const grabar = () => {
-
-    const currentDate = new Date().toLocaleDateString();
-    const currentTime = new Date().toLocaleTimeString();
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      "razonSocial": `${csvData.razonSocial}`,
-      "rut": `${csvData.rut}`,
-      "digitoVerificador": `${csvData.digitoVerificador}`,
-      "nombreFantasia": `${csvData.nombreFantasia}`,
-      "giro": `${csvData.giro}`,
-      "direccionFacturacion": `${csvData.direccionFacturacion}`,
-      "region": `${csvData.region}`,
-      "comunaFacturacion": `${csvData.comunaFacturacion}`,
-      "nombreContactoFacturacion": `${csvData.nombreContactoFacturacion}`,
-      "telefonoContactoFacturacion": `${csvData.telefonoContactoFacturacion}`,
-      "emailContactoFacturacion": `${csvData.emailContactoFacturacion}`,
-      "cargoContactoFacturacion": `${csvData.cargoContactoFacturacion}`,
-      "nombreContactoCobranza": `${csvData.nombreContactoCobranza}`,
-      "telefonoContactoCobranza": `${csvData.telefonoContactoCobranza}`,
-      "emailContactoCobranza": `${csvData.emailContactoCobranza}`,
-      "cargoContactoCobranza": `${csvData.cargoContactoCobranza}`,
-      "usuarioCreador": `${csvData.usuarioCreador}`,
-      "fechaCreacion": `${csvData.fechaCreacion}`,
-      "fechaUltimaModificacion": `${currentDate} ${currentTime}`,
-      "usuarioUltimaModificacion": usuarioActual.toUpperCase(),
-      "estado": "NO VIGENTE"
-    });
-
-    var requestOptions = {
-      method: 'PUT',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
-
-    fetch("http://localhost/api/empresas/" + id_empresa, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-
-    alert("Empresa Eliminada")
-    navigate("/empresa")
-
-    location.reload();
-
-
-
-  }
 
 
 
   return (
     <div className="containter justify-content-center">
-{token ? (
+      {token ? (
         <div>
+
       <nav className="navbar p-1">
         <div className="container-fluid row">
           <div className="col-2">
@@ -152,10 +83,10 @@ export const EliminarEmpresaId = () => {
 
       </nav>
 
-      <div id="eliminar-titulo" className="justify-content-center text-light text-center border border-dark border-2 border-top-0">E L I M I N A R</div>
+      <div id="consultar-titulo" className="justify-content-center text-light text-center border border-dark border-2 border-top-0">C O N S U L T A R</div>
       <div>
 
-        <button id="btn-volver" className="btn col-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/eliminar_empresa")}>VOLVER</button>
+        <button id="btn-volver" className="btn col-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/consultar_empresa")}>VOLVER</button>
 
       </div>
 
@@ -296,18 +227,11 @@ export const EliminarEmpresaId = () => {
       <div className="row justify-content-center m-1">
 
       </div>
-      <div className="col-10">
-        <div className="text-end">
-
-          <button id="btn-grabar" className="col-1 justify border border-3 border-dark btn" onClick={grabar}><b>ELIMINAR</b></button>
-
-
-        </div>
-      </div>
 
       </div>
 
 ):<h1>DEBE INICIAR SESION</h1>}
+
 
     </div>
   );

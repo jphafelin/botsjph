@@ -20,6 +20,7 @@ import "../../styles/navbar.css"
 export const Home = () => {
 
   
+  const token = localStorage.getItem("token");
 
 
 

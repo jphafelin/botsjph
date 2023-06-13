@@ -7,7 +7,7 @@ import '../../styles/botones.css'
 
 
 
-export const ModificarEmpresaAPI = () => {
+export const ConsultarEmpresaAPI = () => {
   const token = localStorage.getItem("token");
 
   const navigate = useNavigate()
@@ -57,7 +57,7 @@ export const ModificarEmpresaAPI = () => {
 
     localStorage.setItem('id_empresa', key)
 
-    return navigate('/modificar_empresa/empresa_actual')
+    return navigate('/consultar_empresa/empresa_actual')
 
     
   }
@@ -74,7 +74,7 @@ export const ModificarEmpresaAPI = () => {
             </Link>
           </div>
           <div className="col-8 text-center justify-content-start ">
-            <h3>MODIFICAR EMPRESA CON API</h3>
+            <h3>ELIMINAR EMPRESA CON API</h3>
           </div>
           <div className="col-2 text-end">
             <p>X04-E1</p>
@@ -97,10 +97,10 @@ export const ModificarEmpresaAPI = () => {
       </nav>
 
       <div
-        id="modificar-titulo"
-        className="justify-content-center text-center border border-dark border-2 border-top-0"
+        id="consultar-titulo"
+        className="justify-content-center text-light text-center border border-dark border-2 border-top-0"
       >
-        M O D I F I C A R
+        C O N S U L T A R
       </div>
       <div>
         <button
