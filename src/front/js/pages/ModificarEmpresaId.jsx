@@ -41,7 +41,7 @@ export const ModificarEmpresaId = () => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost/api/empresas/" + id_empresa2, requestOptions)
+    fetch("http://186.67.10.116:3002/api/empresas/" + id_empresa2, requestOptions)
       .then(response => response.json())
       .then((datos) => {
 
@@ -162,7 +162,7 @@ export const ModificarEmpresaId = () => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost/api/empresas/" + id_empresa2, requestOptions)
+    fetch("http://186.67.10.116:3002/api/empresas/" + id_empresa2, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

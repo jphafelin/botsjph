@@ -27,7 +27,7 @@ export const ConsultarEmpresaId = () => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost/api/empresas/" + id_empresa, requestOptions)
+    fetch("http://186.67.10.116:3002/api/empresas/" + id_empresa, requestOptions)
       .then(response => response.json())
       .then((datos) => {
 

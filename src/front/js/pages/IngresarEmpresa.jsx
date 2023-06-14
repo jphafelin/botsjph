@@ -34,7 +34,7 @@ export const IngresarEmpresa = () => {
 
   useEffect(() => {
 
-    fetch('http://localhost/api/empresas/', requestOptions)
+    fetch('http://186.67.10.116:3002/api/empresas/', requestOptions)
     .then(response => response.json())
     .then(datos => {
       console.log(datos);
@@ -257,7 +257,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://localhost/api/empresas/", requestOptions)
+fetch("http://186.67.10.116:3002/api/empresas/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));

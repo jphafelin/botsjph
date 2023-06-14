@@ -13,7 +13,7 @@ import "../../styles/home.css";
 export const IngresarUsuarioYContrasena = () => {
 
   const usuarios = useUsuariosContext();
-  console.log("HOLA VENGO DEL CONTEXT", usuarios);
+  console.log("HOLA VENGO DEL CONTEXT 2", usuarios);
   const token = localStorage.getItem("token");
 
 

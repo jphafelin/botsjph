@@ -17,7 +17,7 @@ export function UsuariosProvider(props) {
           redirect: 'follow'
         };
     
-        fetch("http://localhost/api/usuarios/", requestOptions)
+        fetch("http://186.67.10.116:3002/api/usuarios/", requestOptions)
           .then(response => response.json())
           .then((datos) => {
     
