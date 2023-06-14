@@ -45,7 +45,7 @@ export const Home = () => {
       <nav className="navbar p-1">
         <div className="container-fluid row">
           <div className="col-2">
-            <Link to="/menu">
+            <Link to="/login">
               <img src={logo} height="60px"></img>
             </Link>
           </div>
