@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import ScrollToTop from './front/js/component/scrollToTop';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import './App.css'
 import { Home } from './front/js/pages/Home';
 import { IngresarUsuarioYContrasena } from './front/js/pages/IngresarUsuarioYContrasena';
@@ -28,6 +32,22 @@ import { UsuariosProvider } from './front/js/store/usuariosProvider';
 
 
 const Layout = () => {
+
+  const router = createBrowserRouter([
+
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/menu",
+      element: <MenuPrincipal />,
+    },
+    {
+      path: "/login",
+      element: <IngresarUsuarioYContrasena />,
+    },
+  ]);
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
   // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 
@@ -38,38 +58,41 @@ const Layout = () => {
     <div>
       <UsuariosProvider>
         <EmpresasProvider>
-          <BrowserRouter >
+          {/* <BrowserRouter > */}
 
             <ScrollToTop>
-              <Routes>
+              {/* <Routes> */}
 
 
-                <Route element={<Home />} path="/" />
-                <Route element={<IngresarUsuarioYContrasena />} path="/login" />
-                <Route element={<MenuPrincipal />} path="/menu" />
+                
+                {/* 
+                
                 <Route element={<Empresa />} path="/empresa" />
                 <Route element={<IngresarEmpresa />} path="/ingresar_empresa" />
-                <Route element={<EliminarEmpresaAPI />} path="/eliminar_empresa" />
+                
                 <Route element={<EliminarEmpresaId />} path="/eliminar_empresa/empresa_actual" />
-                <Route element={<ModificarEmpresaAPI />} path="/modificar_empresa" />
+                <Route element={<EliminarEmpresaAPI />} path="/eliminar_empresa" />
+                
                 <Route element={<ModificarEmpresaId />} path="/modificar_empresa/empresa_actual" />
-                <Route element={<ConsultarEmpresaAPI />} path="/consultar_empresa" />
+                <Route element={<ModificarEmpresaAPI />} path="/modificar_empresa" />
+                
                 <Route element={<ConsultarEmpresaId />} path="/consultar_empresa/empresa_actual" />
+                <Route element={<ConsultarEmpresaAPI />} path="/consultar_empresa" />
 
-                <Route element={<Bots />} path="/bots" />
-
-
-
-
+                <Route element={<Bots />} path="/bots" /> */}
+                
 
 
+                <RouterProvider router={router} />
 
 
-              </Routes>
+
+
+              {/* </Routes> */}
 
               <Footer />
             </ScrollToTop>
-          </BrowserRouter>
+          {/* </BrowserRouter> */}
         </EmpresasProvider>
       </UsuariosProvider>
     </div>
