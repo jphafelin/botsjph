@@ -1,0 +1,115 @@
+body {
+    background: rgb(163, 163, 163);
+    font-family: monospace
+}
+
+#btn-ingresar {
+    background: green;
+}
+
+#btn-eliminar {
+    background: red;
+}
+
+#btn-modificar {
+    background: yellow;
+}
+
+#btn-consultar {
+    background: rgb(25, 0, 255);
+}
+
+#btn-reporte {
+    background: violet;
+}
+
+#btn-volver {
+    background: #FF8000
+}
+
+.casilla-id {
+    width: 43px;
+
+}
+
+.casilla-codigo-bot {
+    width: 52px;
+
+}
+
+
+.casilla-descripcion-bot {
+    width: 228px;
+
+}
+
+
+.casilla-observacion {
+    width: 450px;
+
+}
+
+.casilla-ruta-carpetas-bot {
+    width: 450px;
+
+}
+
+
+
+.casilla-inicio {
+    width: 100px;
+
+}
+
+.casilla-termino {
+    width: 100px;
+
+}
+
+
+.label-id {
+    margin-left: 50px
+}
+
+
+.label-codigo-bot {
+    margin-left: 30px
+}
+
+.label-descripcion-bot {
+    margin-left: 100px
+}
+
+.label-estado {
+    margin-left: 15px
+}
+
+.label-tipo-ejecucion {
+    margin-left: 40px
+}
+
+.label-nombre-empresa {
+    margin-left: 200px
+}
+
+.label-observacion {
+    margin-left: 250px
+}
+
+.label-ruta-carpetas-bot {
+    margin-left: 200px
+}
+
+.label-inicio {
+    margin-left: 200px
+}
+
+.label-termino {
+    margin-left: 180px
+}
+
+
+
+#formulario {
+    margin: auto;
+}
