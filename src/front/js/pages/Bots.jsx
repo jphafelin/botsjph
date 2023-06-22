@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../../styles/empresa.css"
+import "../../styles/bots.css"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 import logo from "../../img/LogoNewOffice.jpeg";

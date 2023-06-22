@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ScrollToTop from './front/js/component/scrollToTop';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css'
@@ -16,7 +16,7 @@ import { ConsultarEmpresaAPI } from './front/js/pages/ConsultarEmpresaAPI';
 import { ConsultarEmpresaId } from './front/js/pages/ConsultarEmpresaId';
 
 import { Bots } from './front/js/pages/Bots';
-
+import { IngresarBot } from './front/js/pages/IngresarBot';
 
 
 import { Footer } from './front/js/component/footer';
@@ -47,6 +47,7 @@ const Layout = () => {
                 <Route element={<Home />} path="/" />
                 <Route element={<IngresarUsuarioYContrasena />} path="/login" />
                 <Route element={<MenuPrincipal />} path="/menu" />
+
                 <Route element={<Empresa />} path="/empresa" />
                 <Route element={<IngresarEmpresa />} path="/ingresar_empresa" />
                 <Route element={<EliminarEmpresaAPI />} path="/eliminar_empresa" />
@@ -57,6 +58,7 @@ const Layout = () => {
                 <Route element={<ConsultarEmpresaId />} path="/consultar_empresa/empresa_actual" />
 
                 <Route element={<Bots />} path="/bots" />
+                <Route element={<IngresarBot />} path="/ingresar_bot" />
 
 
 
