@@ -10,12 +10,22 @@ import { useEmpresasContext } from "../store/empresasProvider";
 
 import "moment";
 
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
+
+
+
 //import axios from 'axios';
 
 
 
 
 export const IngresarBot = () => {
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const empresas = useEmpresasContext();
   console.log("HOLA VENGO DEL CONTEXT", empresas[0]);
@@ -62,11 +72,11 @@ export const IngresarBot = () => {
     localStorage.removeItem("apellido_user");
     localStorage.removeItem("token");
     navigate("/login");
-    location.reload();
+    //location.reload();
 
   }
 
- 
+
 
 
   const [value, setValue] = useState("");
@@ -75,11 +85,11 @@ export const IngresarBot = () => {
   const [value4, setValue4] = useState("");
   const [value5, setValue5] = useState("");
   const [value6, setValue6] = useState("");
-  
-  const [selectedOption, setSelectedOption] = useState("VIGENTE");
-  const [selectedOption2, setSelectedOption2] = useState("RAZON SOCIAL 1");
 
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState("VIGENTE");
+  const [selectedOption2, setSelectedOption2] = useState(empresas[0].razonSocial);
+
+  const [selectedValue, setSelectedValue] = useState('NUNCA');
 
 
 
@@ -153,8 +163,15 @@ export const IngresarBot = () => {
     console.log(selectedValue);
   };
 
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const filePath = URL.createObjectURL(file);
+    console.log(event.target.files);
+  };
 
   const grabar = () => {
+    
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -167,9 +184,9 @@ export const IngresarBot = () => {
       "nombreEmpresa": selectedOption2,
       "observacion": value3.toUpperCase(),
       "rutaCarpetasBots": value4.toUpperCase(),
-      "inicio": value5.toUpperCase(),
-      "termino": value6.toUpperCase(),
-      
+      "inicio": startDate.toLocaleDateString('es-ES', options).replace(/\//g, '-'),
+      "termino": endDate.toLocaleDateString('es-ES', options).replace(/\//g, '-'),
+
 
       "usuarioCreador": usuarioActual.toUpperCase(),
       "fechaCreacion": `${currentDate} ${currentTime}`,
@@ -204,7 +221,7 @@ export const IngresarBot = () => {
     alert("Bot Creado")
     navigate("/bots")
 
-    location.reload();
+    //location.reload();
 
 
 
@@ -213,7 +230,7 @@ export const IngresarBot = () => {
 
 
   return (
-    <div className="containter justify-content-center">
+    <div className="justify-content-center">
       {token ? (
         <div>
           <nav className="navbar p-1">
@@ -238,7 +255,7 @@ export const IngresarBot = () => {
 
           </nav>
 
-          <div id="ingresar-titulo" className="justify-content-center text-light text-center border border-dark border-2 border-top-0">I N G R E S A R</div>
+          <div id="ingresar-titulo" className="justify-content-center text-light text-center border border-dark border-2">I N G R E S A R</div>
           <div>
 
             <button id="btn-volver" className="btn col-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/bots")}>VOLVER</button>
@@ -275,24 +292,34 @@ export const IngresarBot = () => {
 
                 <label className="label-tipo-ejecucion">TIPO DE EJECUCION:</label>
                 <label>
-        <input
-          type="radio"
-          value="NUNCA"
-          checked={selectedValue === 'NUNCA'}
-          onChange={handleRadioChange}
-        />
-        NUNCA
-      </label>
+                  <input className="mx-2"
+                    type="radio"
+                    value="SIEMPRE"
+                    checked={selectedValue === 'SIEMPRE'}
+                    onChange={handleRadioChange}
+                  />
+                  SIEMPRE
+                </label>
 
-      <label>
-        <input
-          type="radio"
-          value="SIEMPRE"
-          checked={selectedValue === 'SIEMPRE'}
-          onChange={handleRadioChange}
-        />
-        SIEMPRE
-      </label>
+                <label>
+                  <input className="mx-3"
+                    type="radio"
+                    value="PROGRAMADO"
+                    checked={selectedValue === 'PROGRAMADO'}
+                    onChange={handleRadioChange}
+                  />
+                  PROGRAMADO
+                </label>
+
+                <label>
+                  <input className="mx-3"
+                    type="radio"
+                    value="NUNCA"
+                    checked={selectedValue === 'NUNCA'}
+                    onChange={handleRadioChange}
+                  />
+                  NUNCA
+                </label>
 
               </div>
 
@@ -300,13 +327,13 @@ export const IngresarBot = () => {
             <div className="row my-2">
               <div className="text-start mx-3">
                 <label className="label-nombre-empresa">NOMBRE EMPRESA:</label>
-                <select className="col bg-primary text-light rounded" onChange={handleSelect2}>
+                <select className="col bg-primary text-light rounded select-nombre-empresa" onChange={handleSelect2}>
                   {empresas.map((item, key = item.id) => (
-            <option>{item.razonSocial}</option>
-          ))}
-      
-                  
-                  
+                    <option>{item.razonSocial}</option>
+                  ))}
+
+
+
 
                 </select>
 
@@ -345,17 +372,33 @@ export const IngresarBot = () => {
               <b>FECHAS OPERACION</b>
             </div>
             <div className="row my-2">
-              <div className="text-start mx-3">
-                <label className="label-inicio">INICIO:</label>
-                <input className="casilla-inicio col-4 text-uppercase rounded" maxLength="10" value={value5}
-                  onChange={handleChange5}
-                  onKeyPress={handleKeyPress}></input>
-                <label className="label-termino">TERMINO:</label>
-                <input className="casilla-termino col-4 text-uppercase rounded" maxLength="10" value={value6}
-                  onChange={handleChange6}
-                  onKeyPress={handleKeyPress}></input>
+              <div className="col text-start mx-3">
+                <div className="d-flex align-items-center">
+                  <label className="label-inicio me-2">INICIO:</label>
+                  <DatePicker
+                    className="casilla-inicio text-uppercase rounded"
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    dateFormat="dd-MM-yyyy"
+                    dropdownMode="scroll"
+                    popperPlacement="top-end"
+                  />
+                </div>
               </div>
 
+              <div className="col text-start">
+                <div className="d-flex align-items-center">
+                  <label className="label-termino me-2">TERMINO:</label>
+                  <DatePicker
+                    className="casilla-inicio text-uppercase rounded"
+                    selected={endDate}
+                    onChange={(date) => setEndDate(date)}
+                    dateFormat="dd-MM-yyyy"
+                    dropdownMode="scroll"
+                    popperPlacement="top-end"
+                  />
+                </div>
+              </div>
             </div>
 
 
@@ -381,6 +424,10 @@ export const IngresarBot = () => {
 
 
           </div>
+          
+          <div>
+      <input type="file" onChange={handleFileUpload} />
+    </div>
 
 
         </div>

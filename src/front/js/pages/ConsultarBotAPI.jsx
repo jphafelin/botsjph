@@ -5,7 +5,7 @@ import logo from '../../img/LogoNewOffice.jpeg';
 import '../../styles/navbar.css';
 import '../../styles/botones.css';
 
-export const ModificarEmpresaAPI = () => {
+export const ConsultarBotAPI = () => {
   const token = localStorage.getItem('token');
 
   const navigate = useNavigate();
@@ -13,6 +13,7 @@ export const ModificarEmpresaAPI = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchTerm2, setSearchTerm2] = useState('');
   const [searchTerm3, setSearchTerm3] = useState('');
+  const [searchTerm4, setSearchTerm4] = useState('');
 
   const [csvData, setCsvData] = useState([]);
 
@@ -24,7 +25,7 @@ export const ModificarEmpresaAPI = () => {
   };
 
   useEffect(() => {
-    fetch('http://186.67.10.116:3002/api/empresas', requestOptions)
+    fetch('http://186.67.10.116:3002/api/bots', requestOptions)
       .then((response) => response.json())
       .then((datos) => {
         setCsvData(datos);
@@ -42,8 +43,8 @@ export const ModificarEmpresaAPI = () => {
   };
 
   function editAdmin(key, user) {
-    localStorage.setItem('id_empresa', key);
-    return navigate('/modificar_empresa/empresa_actual');
+    localStorage.setItem('id_bot', key);
+    return navigate('/consultar_bot/bot_actual');
   }
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -53,11 +54,13 @@ export const ModificarEmpresaAPI = () => {
       const searchRegex = new RegExp(searchTerm, 'i');
       const searchRegex2 = new RegExp(searchTerm2, 'i');
       const searchRegex3 = new RegExp(searchTerm3, 'i');
+      const searchRegex4 = new RegExp('^' + searchTerm4, 'i');
 
       return (
-        searchRegex.test(`${item.rut}-${item.digitoVerificador}`) &&
-        searchRegex2.test(item.razonSocial) &&
-        searchRegex3.test(item.estado)
+        searchRegex.test(item.codBot) &&
+        searchRegex2.test(item.nombreEmpresa) &&
+        searchRegex3.test(item.descripcionBot) &&
+        searchRegex4.test(item.estado)
       );
     })
     .slice(indexOfFirstItem, indexOfLastItem);
@@ -67,11 +70,13 @@ export const ModificarEmpresaAPI = () => {
       const searchRegex = new RegExp(searchTerm, 'i');
       const searchRegex2 = new RegExp(searchTerm2, 'i');
       const searchRegex3 = new RegExp(searchTerm3, 'i');
+      const searchRegex4 = new RegExp('^' + searchTerm4, 'i');
 
       return (
-        searchRegex.test(`${item.rut}-${item.digitoVerificador}`) &&
-        searchRegex2.test(item.razonSocial) &&
-        searchRegex3.test(item.estado)
+        searchRegex.test(item.codBot) &&
+        searchRegex2.test(item.nombreEmpresa) &&
+        searchRegex3.test(item.descripcionBot) &&
+        searchRegex4.test(item.estado)
       );
     }).length / itemsPerPage
   );
@@ -120,7 +125,7 @@ export const ModificarEmpresaAPI = () => {
                 </Link>
               </div>
               <div className="col-8 text-center justify-content-start ">
-                <h3>ELIMINAR EMPRESA CON API</h3>
+                <h3>ELIMINAR BOT CON API</h3>
               </div>
               <div className="col-2 text-end">
                 <p>X04-E1</p>
@@ -143,12 +148,17 @@ export const ModificarEmpresaAPI = () => {
             </div>
           </nav>
 
-          <div id="modificar-titulo" className="justify-content-center text-center border border-dark border-2">M O D I F I C A R</div>
+          <div
+            id="consultar-titulo"
+            className="justify-content-center text-light text-center border border-dark border-2"
+          >
+            C O N S U L T A R
+          </div>
           <div>
             <button
               id="btn-volver"
               className="btn col-lg-1 m-1 justify border border-3 border-dark text-light"
-              onClick={(volver) => navigate('/empresa')}
+              onClick={(volver) => navigate('/bots')}
             >
               VOLVER
             </button>
@@ -159,15 +169,18 @@ export const ModificarEmpresaAPI = () => {
             className="col-lg-9 text-center border border-3 border-dark border-top-0 bg-light"
           >
             <div className="p-1 border-top border-bottom border-dark border-3 justify-content-center banda">
-              <b>ELEGIR EMPRESA</b>
+              <b>ELEGIR BOT</b>
             </div>
 
             <div className="d-flex">
-              <div className="col-2 border border-dark">
-                <b>RUT</b>
+              <div className="col-1 border border-dark">
+                <b>COD BOT</b>
               </div>
-              <div className="col-8 border border-dark">
-                <b>RAZON SOCIAL</b>
+              <div className="col-4 border border-dark">
+                <b>NOMBRE EMPRESA</b>
+              </div>
+              <div className="col-5 border border-dark">
+                <b>DESCRIPCION BOT</b>
               </div>
               <div className="col-2 border border-dark">
                 <b>ESTADO</b>
@@ -176,22 +189,28 @@ export const ModificarEmpresaAPI = () => {
 
             <div className="d-flex">
               <input
-                className="col-2"
+                className="col-1"
                 type="text"
                 value={searchTerm.toUpperCase()}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               <input
-                className="col-8"
+                className="col-4"
                 type="text"
                 value={searchTerm2.toUpperCase()}
                 onChange={(e) => setSearchTerm2(e.target.value)}
               />
               <input
-                className="col-2"
+                className="col-5"
                 type="text"
                 value={searchTerm3.toUpperCase()}
                 onChange={(e) => setSearchTerm3(e.target.value)}
+              />
+              <input
+                className="col-2"
+                type="text"
+                value={searchTerm4.toUpperCase()}
+                onChange={(e) => setSearchTerm4(e.target.value)}
               />
             </div>
 
@@ -202,11 +221,14 @@ export const ModificarEmpresaAPI = () => {
                   className="d-flex"
                   onClick={() => editAdmin(item.id)}
                 >
-                  <div className="col-2 border border-dark">
-                    <b>{item.rut}-{item.digitoVerificador}</b>
+                  <div className="col-1 border border-dark">
+                    <b>{item.codBot}</b>
                   </div>
-                  <div className="col-8 border border-dark text-start">
-                    <b className="mx-2">{item.razonSocial}</b>
+                  <div className="col-4 border border-dark text-start">
+                    <b className="mx-2">{item.nombreEmpresa}</b>
+                  </div>
+                  <div className="col-5 border border-dark text-start">
+                    <b className="mx-2">{item.descripcionBot}</b>
                   </div>
                   <div className="col-2 border border-dark">
                     <b>{item.estado}</b>

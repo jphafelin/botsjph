@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/botones.css"
+import "../../styles/empresa.css"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 import logo from "../../img/LogoNewOffice.jpeg";
 import "../../styles/navbar.css"
-
-
 import "moment";
-
-//import axios from 'axios';
-
 
 
 
 export const IngresarEmpresa = () => {
+
 
   const currentDate = new Date().toLocaleDateString();
 	const currentTime = new Date().toLocaleTimeString();
@@ -56,7 +53,7 @@ export const IngresarEmpresa = () => {
     localStorage.removeItem("apellido_user");
     localStorage.removeItem("token");
     navigate("/login");
-    location.reload();
+    //location.reload();
     
     }
 
@@ -327,7 +324,7 @@ fetch("http://186.67.10.116:3002/api/empresas/", requestOptions)
        alert("Empresa Creada")
        navigate("/empresa")
        
-       location.reload();
+       //location.reload();
       
  
 
@@ -336,7 +333,7 @@ fetch("http://186.67.10.116:3002/api/empresas/", requestOptions)
 
 
   return (
-    <div className="containter justify-content-center">
+    <div className="justify-content-center">
       {token ? (
         <div>
       <nav className="navbar p-1">
@@ -371,7 +368,7 @@ fetch("http://186.67.10.116:3002/api/empresas/", requestOptions)
       <div id="formulario" className="col-8 text-center py-1 border border-3 border-dark bg-light">
         <div className="row">
           <div className="text-start mx-3">
-            <label className="label-id">ID:</label>
+            <label className="label-id-empresa">ID:</label>
             <input className="casilla-id col bg-light rounded" maxLength="4" value={id} disabled="disabled"></input>
             <label className="label-razon-social">RAZON SOCIAL:</label>
             <input className=" casilla-razon-social col-6 text-uppercase rounded" maxLength="45" value={value}

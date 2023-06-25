@@ -47,7 +47,7 @@ export const ConsultarEmpresaId = () => {
     localStorage.removeItem("apellido_user");
     localStorage.removeItem("token");
     navigate("/login");
-    location.reload();
+    //location.reload();
     
     }
 
@@ -57,7 +57,7 @@ export const ConsultarEmpresaId = () => {
 
 
   return (
-    <div className="containter justify-content-center">
+    <div className="justify-content-center">
       {token ? (
         <div>
 
@@ -83,7 +83,7 @@ export const ConsultarEmpresaId = () => {
 
       </nav>
 
-      <div id="consultar-titulo" className="justify-content-center text-light text-center border border-dark border-2 border-top-0">C O N S U L T A R</div>
+      <div id="consultar-titulo" className="justify-content-center text-light text-center border border-dark border-2">C O N S U L T A R</div>
       <div>
 
         <button id="btn-volver" className="btn col-1 m-1 justify border border-3 border-dark text-light" onClick={volver => navigate("/consultar_empresa")}>VOLVER</button>
@@ -93,7 +93,7 @@ export const ConsultarEmpresaId = () => {
       <div id="formulario" className="col-8 text-center py-1 border border-3 border-dark bg-light">
         <div className="row">
           <div className="text-start mx-3">
-            <label className="label-id">ID:</label>
+            <label className="label-id-empresa">ID:</label>
             <input className="casilla-id col bg-light rounded" maxLength="4" value={csvData.id} disabled="disabled"></input>
             <label className="label-razon-social">RAZON SOCIAL:</label>
             <input className=" casilla-razon-social col-6 text-uppercase rounded bg-light" maxLength="45" value={csvData.razonSocial} disabled="disabled"

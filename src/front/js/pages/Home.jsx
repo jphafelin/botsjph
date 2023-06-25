@@ -41,7 +41,7 @@ export const Home = () => {
 
 
   return (
-    <div className="containter justify-content-center">
+    <div className="justify-content-center">
       <nav className="navbar p-1">
         <div className="container-fluid row">
           <div className="col-2">

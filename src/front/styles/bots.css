@@ -43,6 +43,10 @@ body {
 
 }
 
+.casilla-nombre-empresa {
+    width: 450px;
+
+}
 
 .casilla-observacion {
     width: 450px;
@@ -63,6 +67,11 @@ body {
 
 .casilla-termino {
     width: 100px;
+
+}
+
+.select-nombre-empresa {
+    width: 420px;
 
 }
 
@@ -101,11 +110,11 @@ body {
 }
 
 .label-inicio {
-    margin-left: 200px
+    margin-left: 190px
 }
 
 .label-termino {
-    margin-left: 180px
+    margin-left: 30px
 }
 
 

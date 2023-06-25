@@ -28,7 +28,7 @@ export const IngresarUsuarioYContrasena = () => {
     localStorage.setItem('token', "token");
 
     navigate("/menu");
-    location.reload();
+    //location.reload();
   }
 
   //const history = useHistory();
@@ -51,7 +51,7 @@ export const IngresarUsuarioYContrasena = () => {
   return (
     
    
-  <div className="container-fluid justify-content-center">
+  <div className="justify-content-center">
   
       <nav className="navbar p-1">
 			<div className="container-fluid row">

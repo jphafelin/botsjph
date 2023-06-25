@@ -22,7 +22,7 @@ export const Bots = () => {
     localStorage.removeItem("token");
     
     navigate("/login");
-    location.reload();
+    //location.reload();
     
     }
 
@@ -34,7 +34,7 @@ export const Bots = () => {
   return (
 
     
-    <div className="containter justify-content-center">
+    <div className="justify-content-center">
       {token ? (
         <div>
       <nav className="navbar p-1">
