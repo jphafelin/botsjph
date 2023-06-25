@@ -32,7 +32,7 @@ export function UsuariosProvider(props) {
           });
         
           
-      }, []);
+      }, [usuarios]);
     
     return (
         <usuariosContext.Provider value = {usuarios}>

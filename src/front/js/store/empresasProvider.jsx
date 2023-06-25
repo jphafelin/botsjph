@@ -32,7 +32,7 @@ export function EmpresasProvider(props) {
           });
         
           
-      }, []);
+      }, [empresas]);
     
     return (
         <empresasContext.Provider value = {empresas}>
