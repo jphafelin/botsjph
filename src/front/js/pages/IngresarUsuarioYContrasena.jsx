@@ -21,7 +21,7 @@ export const IngresarUsuarioYContrasena = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function inicioSesion (id, nombre){
+  function inicioSesion (id, nombre, apellido){
     localStorage.setItem('id_user', id);
     localStorage.setItem('nombre_user', nombre);
     localStorage.setItem('token', "token");
@@ -39,7 +39,7 @@ export const IngresarUsuarioYContrasena = () => {
 
      
       .map((item) => (
-        username === item.usuario ? (password === item.clave ?  inicioSesion(item.id, item.nombre) : console.log("CONTRASEÑA INCORRECTA")) : console.log("adios")
+        username === item.usuario ? (password === item.contrasena ?  inicioSesion(item.id, item.nombre) : console.log("CONTRASEÑA INCORRECTA")) : console.log("adios")
         
       ))}
 
