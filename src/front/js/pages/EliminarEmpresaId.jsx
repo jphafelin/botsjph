@@ -15,10 +15,9 @@ export const EliminarEmpresaId = () => {
 
   const idUsuarioActual = localStorage.getItem("id_user");
   const nombreUsuarioActual = localStorage.getItem("nombre_user");
-  const apellidoUsuarioActual = localStorage.getItem("apellido_user");
   const token = localStorage.getItem("token");
 
-  const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual} ${apellidoUsuarioActual}`;
+  const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual}`;
 
   const navigate = useNavigate();
   const id_empresa = localStorage.getItem("id_empresa");
@@ -49,7 +48,6 @@ export const EliminarEmpresaId = () => {
   const cerrarSesion = () =>{
     localStorage.removeItem("id_user");
     localStorage.removeItem("nombre_user");
-    localStorage.removeItem("apellido_user");
     localStorage.removeItem("token");
     navigate("/login");
     //location.reload();

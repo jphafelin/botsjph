@@ -8,8 +8,8 @@ export const Footer = () => {
 
 	const idUsuarioActual = localStorage.getItem("id_user");
 	const nombreUsuarioActual = localStorage.getItem("nombre_user");
-	const apellidoUsuarioActual = localStorage.getItem("apellido_user");
-	const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual} ${apellidoUsuarioActual}`;
+	
+	const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual}`;
 	const currentDate = new Date().toLocaleDateString();
 	const currentTime = new Date().toLocaleTimeString();
 

@@ -20,6 +20,7 @@ import { IngresarBot } from './front/js/pages/IngresarBot';
 import { EliminarBotAPI } from './front/js/pages/EliminarBotAPI';
 import { EliminarBotId } from './front/js/pages/EliminarBotId';
 import { ModificarBotAPI } from './front/js/pages/ModificarBotAPI';
+import { ModificarBotId } from './front/js/pages/ModificarBotId';
 import { ConsultarBotAPI } from './front/js/pages/ConsultarBotAPI';
 import { ConsultarBotId } from './front/js/pages/ConsultarBotId';
 
@@ -27,6 +28,7 @@ import { ConsultarBotId } from './front/js/pages/ConsultarBotId';
 import { Footer } from './front/js/component/footer';
 import { EmpresasProvider } from './front/js/store/empresasProvider';
 import { UsuariosProvider } from './front/js/store/usuariosProvider';
+import { BotsProvider } from './front/js/store/botsProvider';
 
 
 
@@ -43,45 +45,48 @@ const Layout = () => {
     <div>
       <UsuariosProvider>
         <EmpresasProvider>
-          <BrowserRouter >
+          <BotsProvider>
+            <BrowserRouter >
 
-            <ScrollToTop>
-              <Routes>
-
-
-                <Route element={<Home />} path="/" />
-                <Route element={<IngresarUsuarioYContrasena />} path="/login" />
-                <Route element={<MenuPrincipal />} path="/menu" />
-
-                <Route element={<Empresa />} path="/empresa" />
-                <Route element={<IngresarEmpresa />} path="/ingresar_empresa" />
-                <Route element={<EliminarEmpresaAPI />} path="/eliminar_empresa" />
-                <Route element={<EliminarEmpresaId />} path="/eliminar_empresa/empresa_actual" />
-                <Route element={<ModificarEmpresaAPI />} path="/modificar_empresa" />
-                <Route element={<ModificarEmpresaId />} path="/modificar_empresa/empresa_actual" />
-                <Route element={<ConsultarEmpresaAPI />} path="/consultar_empresa" />
-                <Route element={<ConsultarEmpresaId />} path="/consultar_empresa/empresa_actual" />
-
-                <Route element={<Bots />} path="/bots" />
-                <Route element={<IngresarBot />} path="/ingresar_bot" />
-                <Route element={<EliminarBotAPI />} path="/eliminar_bot" />
-                <Route element={<EliminarBotId />} path="/eliminar_bot/bot_actual" />
-                <Route element={<ModificarBotAPI />} path="/modificar_bot" />
-                <Route element={<ConsultarBotAPI />} path="/consultar_bot" />
-                <Route element={<ConsultarBotId />} path="/consultar_bot/bot_actual" />
+              <ScrollToTop>
+                <Routes>
 
 
+                  <Route element={<Home />} path="/" />
+                  <Route element={<IngresarUsuarioYContrasena />} path="/login" />
+                  <Route element={<MenuPrincipal />} path="/menu" />
 
+                  <Route element={<Empresa />} path="/empresa" />
+                  <Route element={<IngresarEmpresa />} path="/ingresar_empresa" />
+                  <Route element={<EliminarEmpresaAPI />} path="/eliminar_empresa" />
+                  <Route element={<EliminarEmpresaId />} path="/eliminar_empresa/empresa_actual" />
+                  <Route element={<ModificarEmpresaAPI />} path="/modificar_empresa" />
+                  <Route element={<ModificarEmpresaId />} path="/modificar_empresa/empresa_actual" />
+                  <Route element={<ConsultarEmpresaAPI />} path="/consultar_empresa" />
+                  <Route element={<ConsultarEmpresaId />} path="/consultar_empresa/empresa_actual" />
 
+                  <Route element={<Bots />} path="/bots" />
+                  <Route element={<IngresarBot />} path="/ingresar_bot" />
+                  <Route element={<EliminarBotAPI />} path="/eliminar_bot" />
+                  <Route element={<EliminarBotId />} path="/eliminar_bot/bot_actual" />
+                  <Route element={<ModificarBotAPI />} path="/modificar_bot" />
+                  <Route element={<ModificarBotId />} path="/modificar_bot/bot_actual" />
+                  <Route element={<ConsultarBotAPI />} path="/consultar_bot" />
+                  <Route element={<ConsultarBotId />} path="/consultar_bot/bot_actual" />
 
 
 
 
-              </Routes>
 
-              <Footer />
-            </ScrollToTop>
-          </BrowserRouter>
+
+
+
+                </Routes>
+
+                <Footer />
+              </ScrollToTop>
+            </BrowserRouter>
+          </BotsProvider>
         </EmpresasProvider>
       </UsuariosProvider>
     </div>

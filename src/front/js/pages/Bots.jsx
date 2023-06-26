@@ -18,7 +18,7 @@ export const Bots = () => {
   const cerrarSesion = () =>{
     localStorage.removeItem("id_user");
     localStorage.removeItem("nombre_user");
-    localStorage.removeItem("apellido_user");
+    
     localStorage.removeItem("token");
     
     navigate("/login");

@@ -36,10 +36,9 @@ export const IngresarBot = () => {
   const navigate = useNavigate();
   const idUsuarioActual = localStorage.getItem("id_user");
   const nombreUsuarioActual = localStorage.getItem("nombre_user");
-  const apellidoUsuarioActual = localStorage.getItem("apellido_user");
   const token = localStorage.getItem("token");
 
-  const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual} ${apellidoUsuarioActual}`;
+  const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual}`;
   const [csvData, setCsvData] = useState([]);
   const [id, setId] = useState("");
 
@@ -69,7 +68,6 @@ export const IngresarBot = () => {
   const cerrarSesion = () => {
     localStorage.removeItem("id_user");
     localStorage.removeItem("nombre_user");
-    localStorage.removeItem("apellido_user");
     localStorage.removeItem("token");
     navigate("/login");
     //location.reload();
@@ -170,7 +168,7 @@ export const IngresarBot = () => {
   };
 
   const grabar = () => {
-    
+
     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
 
     var myHeaders = new Headers();
@@ -424,10 +422,10 @@ export const IngresarBot = () => {
 
 
           </div>
-          
+
           <div>
-      <input type="file" onChange={handleFileUpload} />
-    </div>
+            <input type="file" onChange={handleFileUpload} />
+          </div>
 
 
         </div>

@@ -19,9 +19,8 @@ export const ModificarEmpresaId = () => {
 
   const idUsuarioActual = localStorage.getItem("id_user");
   const nombreUsuarioActual = localStorage.getItem("nombre_user");
-  const apellidoUsuarioActual = localStorage.getItem("apellido_user");
   const token = localStorage.getItem("token");
-  const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual} ${apellidoUsuarioActual}`;
+  const usuarioActual = `${idUsuarioActual} - ${nombreUsuarioActual}`;
 
   const empresas = useEmpresasContext();
   console.log("HOLA VENGO DEL CONTEXT", empresas[0]);
@@ -61,7 +60,6 @@ export const ModificarEmpresaId = () => {
   const cerrarSesion = () =>{
     localStorage.removeItem("id_user");
     localStorage.removeItem("nombre_user");
-    localStorage.removeItem("apellido_user");
     localStorage.removeItem("token");
     navigate("/login");
     //location.reload();
