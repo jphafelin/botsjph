@@ -24,6 +24,11 @@ import { ModificarBotId } from './front/js/pages/ModificarBotId';
 import { ConsultarBotAPI } from './front/js/pages/ConsultarBotAPI';
 import { ConsultarBotId } from './front/js/pages/ConsultarBotId';
 
+import { Usuario } from './front/js/pages/Usuario';
+import { EliminarUsuarioAPI } from './front/js/pages/EliminarUsuarioAPI';
+import { ModificarUsuarioAPI } from './front/js/pages/ModificarUsuarioAPI';
+import { ConsultarUsuarioAPI } from './front/js/pages/ConsultarUsuarioAPI';
+
 
 import { Footer } from './front/js/component/footer';
 import { EmpresasProvider } from './front/js/store/empresasProvider';
@@ -73,6 +78,11 @@ const Layout = () => {
                   <Route element={<ModificarBotId />} path="/modificar_bot/bot_actual" />
                   <Route element={<ConsultarBotAPI />} path="/consultar_bot" />
                   <Route element={<ConsultarBotId />} path="/consultar_bot/bot_actual" />
+
+                  <Route element={<Usuario />} path="/usuario" />
+                  <Route element={<EliminarUsuarioAPI />} path="/eliminar_usuario" />
+                  <Route element={<ModificarUsuarioAPI />} path="/modificar_usuario" />
+                  <Route element={<ConsultarUsuarioAPI />} path="/consultar_usuario" />
 
 
 
