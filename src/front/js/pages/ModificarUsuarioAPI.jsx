@@ -120,7 +120,7 @@ export const ModificarUsuarioAPI = () => {
                 </Link>
               </div>
               <div className="col-8 text-center justify-content-start ">
-                <h3>ELIMINAR USUARIO CON API</h3>
+                <h3>MODIFICAR USUARIO CON API</h3>
               </div>
               <div className="col-2 text-end">
                 <p>X04-E1</p>

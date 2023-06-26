@@ -221,7 +221,7 @@ export const ModificarEmpresaId = () => {
             <input className="casilla-rut col-2 text-uppercase rounded" maxLength="10" value={value2} onChange={handleChange2}></input>
             -
             <input className="casilla-rut-verificador col-2 text-uppercase rounded" maxLength="1" value={value3} onChange={(e) => { setValue3(e.target.value) }} ></input>
-            <label className="label-estado">ESTADO:</label>
+            <label className="label-estado-empresa">ESTADO:</label>
             <select className="col bg-primary text-light rounded" value={selectedOption} onChange={handleSelect}>
               <option>VIGENTE</option>
               <option>NO VIGENTE</option>
@@ -346,7 +346,7 @@ export const ModificarEmpresaId = () => {
             <label>USUARIO ULTIMA MODIF.:</label>
             <input className="casilla-email col-4 text-uppercase rounded bg-light" maxLength="42" value={value18} disabled="disabled"
             ></input>
-            <label className="label-cargo">FECHA ULT. MODIF.:</label>
+            <label className="label-nombre-fantasia">FECHA ULT. MODIF.:</label>
             <input className="casilla-cargo col-4 text-uppercase rounded bg-light" maxLength="23" value={value19} disabled="disabled"
             ></input>
           </div>

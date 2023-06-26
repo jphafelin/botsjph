@@ -380,7 +380,7 @@ fetch("http://186.67.10.116:3002/api/empresas/", requestOptions)
       <input className="casilla-rut-verificador col-2 text-uppercase rounded" maxLength="1" value={value15}
       onChange={handleChange15}
       onKeyPress={handleKeyPress}></input>
-            <label className="label-estado">ESTADO:</label>
+            <label className="label-estado-empresa">ESTADO:</label>
             <select className="col bg-primary text-light rounded" onChange={handleSelect}>
               <option>VIGENTE</option>
               <option>NO VIGENTE</option>

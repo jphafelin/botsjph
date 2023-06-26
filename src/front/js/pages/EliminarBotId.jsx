@@ -293,7 +293,7 @@ export const EliminarBotId = () => {
                 <label>USUARIO ULTIMA MODIF.:</label>
                 <input className="casilla-email col-4 text-uppercase rounded bg-light" maxLength="42" value={csvData.usuarioUltimaModificacion} disabled="disabled"
                 ></input>
-                <label className="label-cargo">FECHA ULT. MODIF.:</label>
+                <label className="label-nombre-fantasia">FECHA ULT. MODIF.:</label>
                 <input className="casilla-cargo col-4 text-uppercase rounded bg-light" maxLength="23" value={csvData.fechaUltimaModificacion} disabled="disabled"
                 ></input>
               </div>

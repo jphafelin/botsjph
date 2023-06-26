@@ -25,6 +25,7 @@ import { ConsultarBotAPI } from './front/js/pages/ConsultarBotAPI';
 import { ConsultarBotId } from './front/js/pages/ConsultarBotId';
 
 import { Usuario } from './front/js/pages/Usuario';
+import { IngresarUsuario } from './front/js/pages/IngresarUsuario';
 import { EliminarUsuarioAPI } from './front/js/pages/EliminarUsuarioAPI';
 import { ModificarUsuarioAPI } from './front/js/pages/ModificarUsuarioAPI';
 import { ConsultarUsuarioAPI } from './front/js/pages/ConsultarUsuarioAPI';
@@ -80,6 +81,7 @@ const Layout = () => {
                   <Route element={<ConsultarBotId />} path="/consultar_bot/bot_actual" />
 
                   <Route element={<Usuario />} path="/usuario" />
+                  <Route element={<IngresarUsuario/>} path="/ingresar_usuario" />
                   <Route element={<EliminarUsuarioAPI />} path="/eliminar_usuario" />
                   <Route element={<ModificarUsuarioAPI />} path="/modificar_usuario" />
                   <Route element={<ConsultarUsuarioAPI />} path="/consultar_usuario" />

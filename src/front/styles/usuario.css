@@ -27,49 +27,41 @@ body {
     background: #FF8000
 }
 
-.casilla-id {
+.casilla-id-usuario {
     width: 43px;
 
 }
 
-.casilla-razon-social {
-    width: 410px;
+.label-id-usuario {
+    margin-left: 100px
+}
+
+.casilla-usuario {
+    width: 140px;
 
 }
 
-.casilla-rut {
-    width: 95px;
+.label-usuario {
+    margin-left: 100px
+}
+
+.casilla-clave {
+    width: 140px;
 
 }
 
-.casilla-rut-verificador {
-    width: 17px;
-
+.label-clave {
+    margin-left: 100px
 }
 
-.casilla-nombre-fantasia {
-    width: 360px;
-
-}
-
-.casilla-giro {
-    width: 360px;
-
-}
-
-.casilla-direccion {
-    width: 360px;
-
-}
-
-.casilla-comuna {
-    width: 185px;
-
-}
 
 .casilla-nombre {
-    width: 316px;
+    width: 320px;
 
+}
+
+.label-nombre {
+    margin-left: 45px
 }
 
 .casilla-telefono {
@@ -77,9 +69,17 @@ body {
 
 }
 
+.label-telefono {
+    margin-left: 80px
+}
+
 .casilla-email {
     width: 380px;
 
+}
+
+.label-email {
+    margin-left: 45px
 }
 
 .casilla-cargo {
@@ -87,41 +87,23 @@ body {
 
 }
 
-.label-id-empresa {
-    margin-left: 15px
+.label-cargo {
+    margin-left: 80px
 }
 
-.label-razon-social {
-    margin-left: 15px
+.casilla-obs {
+    width: 230px;
+
 }
 
-.label-rut {
-    margin-left: 15px
+.label-obs {
+    margin-left: 62px
 }
 
 .label-estado {
-    margin-left: 15px
+    margin-left: 80px
 }
 
-.label-giro {
-    margin-left: 15px
-}
-
-.label-region {
-    margin-left: 15px
-}
-
-.label-comuna {
-    margin-left: 15px
-}
-
-.label-telefono {
-    margin-left: 100px
-}
-
-.label-cargo {
-    margin-left: 45px
-}
 
 #formulario {
     margin: auto;

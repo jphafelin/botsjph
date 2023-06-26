@@ -169,7 +169,7 @@ export const EliminarEmpresaId = () => {
             <input className="casilla-rut col-2 text-uppercase rounded bg-light" maxLength="12" value={csvData.rut} disabled="disabled"></input>
             -
             <input className="casilla-rut-verificador col-2 text-uppercase rounded bg-light" maxLength="12" value={csvData.digitoVerificador} disabled="disabled"></input>
-            <label className="label-estado">ESTADO:</label>
+            <label className="label-estado-empresa">ESTADO:</label>
             <input className="casilla-rut col-2 text-uppercase rounded bg-light" value={csvData.estado} disabled="disabled">
 
 
@@ -276,8 +276,8 @@ export const EliminarEmpresaId = () => {
             <label>USUARIO ULTIMA MODIF.:</label>
             <input className="casilla-email col-4 text-uppercase rounded bg-light" maxLength="42" value={csvData.usuarioUltimaModificacion} disabled="disabled"
             ></input>
-            <label className="label-cargo">FECHA ULT. MODIF.:</label>
-            <input className="casilla-cargo col-4 text-uppercase rounded bg-light" maxLength="23" value={csvData.fechaUltimaModificacion} disabled="disabled"
+            <label className="label-nombre-fantasia">FECHA ULT. MODIF.:</label>
+            <input className="casilla-telefono col-4 text-uppercase rounded bg-light" maxLength="23" value={csvData.fechaUltimaModificacion} disabled="disabled"
             ></input>
           </div>
 
